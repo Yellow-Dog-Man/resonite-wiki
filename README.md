@@ -2,6 +2,8 @@
 
 A collection of files required to spin up the Resonite Wiki. 
 
+> WIP Right now. Feel free to observe, but let me cook - prime.
+
 ## Goals
 1. Open Source 
    - Except for Secrets of Course
@@ -16,3 +18,28 @@ Our current wiki(wiki.resonite.com) is running an older setup that mixes Docker 
 You can read more about this in a bunch of GitHub Issues:
 - [Internal Issue](https://github.com/Yellow-Dog-Man/InternalDiscussion/issues/683)
 - [All public issues involving the wiki](https://github.com/Yellow-Dog-Man/Resonite-Issues/issues?q=state%3Aopen%20label%3A%22Wiki%22)
+
+## Files
+- extensions/
+   - Contains all our Mediawiki Extensions. These are Git Submodules
+- skins/
+   - Contains all our Skins. These are git Submodules
+- docker-compose.yaml
+   - Compose file that sets everything up
+- Dockerfile
+   - Contains our custom dockerfile for the mediawiki installation.
+   - This can bake Extensions into the docker container, avoiding the overhead and creating a stable image
+- config
+   - A collection of configuration files, managed and linked into the container
+   - Orchestrated for separation of concerns and maintenance
+- scripts
+   - Helpful scripts to handle some automated tasks.
+
+
+## Resources
+- https://www.mediawiki.org/wiki/MediaWiki-Docker
+- https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/core/+/HEAD/docker-compose.yml
+- https://docs.docker.com/compose/how-tos/multiple-compose-files/extends/
+
+
+
