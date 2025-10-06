@@ -32,7 +32,9 @@ You can read more about this in a bunch of GitHub Issues:
    - This can bake Extensions into the docker container, avoiding the overhead and creating a stable image
 - config
    - A collection of configuration files, managed and linked into the container
+   - LocalSettings.php is linked into the container via docker in the usual mechanism.
    - Orchestrated for separation of concerns and maintenance
+   - Feel free to re-organize this, the initial split is arbitrary.
 - scripts
    - Helpful scripts to handle some automated tasks.
 

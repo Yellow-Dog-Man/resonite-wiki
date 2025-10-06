@@ -10,6 +10,8 @@ services:
       - 8888:80
     volumes:
       - /volumes/mediawiki:/var/www/html
+      - /config:/var/www/html/config:ro
+      - /config/Root.php:/var/www/html/LocalSettings.php:ro
   resonite-wiki-database:
     container_name: resonite-wiki-database
     image: mariadb
