@@ -11,7 +11,8 @@ services:
     volumes:
       - /volumes/mediawiki:/var/www/html
       - /config:/var/www/html/config:ro
-      - /config/Root.php:/var/www/html/LocalSettings.php:ro
+      - /config/LocalSettings.php:/var/www/html/LocalSettings.php:ro
+      - /extensions:/var/www/html/extensions:ro
   resonite-wiki-database:
     container_name: resonite-wiki-database
     image: mariadb
