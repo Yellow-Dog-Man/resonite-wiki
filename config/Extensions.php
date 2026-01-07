@@ -3,7 +3,6 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
 }
-require_once "$IP/config/extensions/Moderation.php"
 require_once "$IP/config/extensions/Translation.php"
 
 wfLoadExtension( 'ShortDescription' );
@@ -16,7 +15,10 @@ $wgGroupPermissions['user']['writeapi'] = true;
 
 wfLoadExtension( 'CategoryTree' );
 
+// Scripting
+wfLoadExtension( 'Scribunto' );
 wfLoadExtension( 'ParserFunctions' );
+$wgScribuntoDefaultEngine = 'luastandalone';
 $wgPFEnableStringFunctions = true;
 
 wfLoadExtension( 'Cite' );
@@ -78,10 +80,6 @@ $wgFileExtensions = array_merge(
 wfLoadExtension( 'DynamicPageList3' );
 wfLoadExtension( 'NukeDPL' );
 
-wfLoadExtension( 'Scribunto' );
-$wgScribuntoDefaultEngine = 'luastandalone';
-wfLoadExtension( 'ParserFunctions' );
-
 //https://www.mediawiki.org/wiki/Extension:Mpdf
 //wfLoadExtension( 'Mpdf' );
 $wgMpdfSimpleOutput = true;
@@ -119,5 +117,8 @@ $customNamespaces = array_fill(2999, 3015, true);
 
 $wgUFAllowedNamespaces = array_merge($standardNamespaces, $customNamespaces);
 $wgUFAllowedNamespaces[-2] = true;
+
+// Load this at the bottom, due to comments in documentation asking for that
+require_once "$IP/config/extensions/Moderation.php"
 
 ?>

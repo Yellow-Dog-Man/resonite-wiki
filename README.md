@@ -38,12 +38,12 @@ You can read more about this in a bunch of GitHub Issues:
 - scripts
    - Helpful scripts to handle some automated tasks.
 
+## Extensions
+
 
 ## Resources
 - https://www.mediawiki.org/wiki/MediaWiki-Docker
 - https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/core/+/HEAD/docker-compose.yml
 - https://docs.docker.com/compose/how-tos/multiple-compose-files/extends/
 - https://hub.docker.com/layers/starcitizentools/mediawiki/smw-jobrunner-latest/images/sha256-7bf342ee8a75845561c7eaffed0106feba8da7ef92df781fc930d1151cb1eceb
-
-
 

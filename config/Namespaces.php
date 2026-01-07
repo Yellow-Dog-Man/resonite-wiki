@@ -27,7 +27,7 @@ $wgContentNamespaces[] = NS_PROTOFLUX;
 $wgNamespacesToBeSearchedDefault[NS_PROTOFLUX] = true;
 
 define("NS_TYPE", $BASE_NAMESPACE_ID++);
-define("NS_TYPE_TALK", 3005);
+define("NS_TYPE_TALK", $BASE_NAMESPACE_ID++);
 $wgExtraNamespaces[NS_TYPE] = "Type";
 $wgExtraNamespaces[NS_TYPE_TALK] = "Type_talk";
 $wgContentNamespaces[] = NS_TYPE;
