@@ -1,0 +1,26 @@
+# Version control
+.git
+.gitmodules
+.gitignore
+
+# Docker files
+Dockerfile
+docker-compose.yaml
+.dockerignore
+
+# Scripts and docs
+scripts/
+README.md
+
+# Volumes (not needed in image)
+volumes/
+
+# Config (will be mounted as volume)
+config/
+
+# Environment files (secrets)
+.env
+
+# Temporary files
+*.tmp
+*.log

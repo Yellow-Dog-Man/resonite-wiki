@@ -2,7 +2,7 @@
 services:
   resonite-wiki:
     container_name: resonite-wiki
-    image: mediawiki:1.45.1
+    build: .
     restart: always
     networks:
       - wiki
@@ -12,7 +12,6 @@ services:
       - /volumes/mediawiki:/var/www/html
       - /config:/var/www/html/config:ro
       - /config/LocalSettings.php:/var/www/html/LocalSettings.php:ro
-      - /extensions:/var/www/html/extensions:ro
     env_file:
       - .env
     environment:

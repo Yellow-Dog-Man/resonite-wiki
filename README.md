@@ -29,7 +29,7 @@ You can read more about this in a bunch of GitHub Issues:
    - Compose file that sets everything up
 - Dockerfile
    - Contains our custom dockerfile for the mediawiki installation.
-   - This can bake Extensions into the docker container, avoiding the overhead and creating a stable image
+   - This can bake Extensions and skins into the docker container, avoiding the overhead and creating a stable image
 - config
    - A collection of configuration files, managed and linked into the container
    - LocalSettings.php is linked into the container via docker in the usual mechanism.
@@ -38,12 +38,12 @@ You can read more about this in a bunch of GitHub Issues:
 - scripts
    - Helpful scripts to handle some automated tasks.
 
-## Extensions
-
 
 ## Resources
 - https://www.mediawiki.org/wiki/MediaWiki-Docker
 - https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/core/+/HEAD/docker-compose.yml
 - https://docs.docker.com/compose/how-tos/multiple-compose-files/extends/
 - https://hub.docker.com/layers/starcitizentools/mediawiki/smw-jobrunner-latest/images/sha256-7bf342ee8a75845561c7eaffed0106feba8da7ef92df781fc930d1151cb1eceb
+- https://github.com/wikimedia/mediawiki-docker?tab=readme-ov-file
+- https://github.com/wikimedia/mediawiki-docker/blob/main/1.45/apache/Dockerfile
 

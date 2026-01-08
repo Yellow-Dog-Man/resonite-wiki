@@ -67,3 +67,6 @@
 [submodule "extensions/VisualEditor"]
 	path = extensions/VisualEditor
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/VisualEditor
+[submodule "skins/Citizen"]
+	path = skins/Citizen
+	url = https://github.com/Yellow-Dog-Man/mediawiki-skins-Citizen.git
