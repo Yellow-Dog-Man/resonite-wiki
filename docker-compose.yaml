@@ -45,6 +45,30 @@ services:
     volumes:
       -  /volumes/database:/var/lib/mysql
 
+  # Runs the batch job queue in a separate container, untested but based on what Star Citizen does. Will test as a part of development.
+  resonite-wiki-jobrunner:
+    container_name: resonite-wiki-jobrunner
+    image: starcitizentools/mediawiki/smw-jobrunner-latest
+    restart: unless-stopped
+    networks:
+      - wiki
+    volumes:
+      - /config:/var/www/html/config:ro
+      - /config/LocalSettings.php:/var/www/html/LocalSettings.php:ro
+    env_file:
+      - .env
+    environment:
+      - MW_DB_TYPE=mysql
+      - MW_DB_SERVER=resonite-wiki-database
+      - MW_DB_NAME=wiki_db
+    secrets:
+      - db_user
+      - db_password
+      - mw_secret_key
+    depends_on:
+      - resonite-wiki-database
+      - resonite-wiki
+
 secrets:
   mysql_root_password:
     environment: MYSQL_ROOT_PASSWORD
