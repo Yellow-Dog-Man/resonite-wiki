@@ -1,4 +1,12 @@
 
+volumes:
+  wiki-images:
+    driver: local
+  wiki-database-backups:
+    driver: local
+  wiki-files-backups:
+    driver: local
+
 services:
   resonite-wiki:
     container_name: resonite-wiki
@@ -9,7 +17,7 @@ services:
     ports:
       - 8888:80
     volumes:
-      - /volumes/mediawiki:/var/www/html
+      - wiki-images:/var/www/html/images:rw
       - /config:/var/www/html/config:ro
       - /config/LocalSettings.php:/var/www/html/LocalSettings.php:ro
     env_file:
@@ -69,7 +77,7 @@ services:
       - resonite-wiki-database
       - resonite-wiki
 
-  # Everyday at 12:00AM make a backup
+  # Everyday at 12:00AM make a backup of the database
   automysqlbackup:
     container_name: automysqlbackup
     image: selim13/automysqlbackup:latest
@@ -79,7 +87,7 @@ services:
     networks:
       - wiki
     volumes:
-      - ./backups/database:/backup
+      - wiki-database-backups:/backup
     environment:
       - DBHOST=resonite-wiki-database
       - USERNAME_FILE=/run/secrets/db_user
@@ -92,6 +100,21 @@ services:
     depends_on:
       - resonite-wiki-database
 
+  # Backup wiki images.
+  wiki-backup:
+    container_name: wiki-backup
+    image: openmrs/cron-backup:latest
+    restart: always
+    networks:
+      - wiki
+    volumes:
+      - wiki-files-backups:/backups
+      - wiki-images:/images:ro
+    environment:
+      - SCHEDULE=0 2 * * *
+      - DIRS=/images:images
+    depends_on:
+      - resonite-wiki
 secrets:
   mysql_root_password:
     environment: MYSQL_ROOT_PASSWORD

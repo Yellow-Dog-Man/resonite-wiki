@@ -47,4 +47,9 @@ You can read more about this in a bunch of GitHub Issues:
 - https://github.com/wikimedia/mediawiki-docker?tab=readme-ov-file
 - https://github.com/wikimedia/mediawiki-docker/blob/main/1.45/apache/Dockerfile
 - https://github.com/selim13/docker-automysqlbackup
+- https://hub.docker.com/r/instrumentisto/restic
+- https://github.com/openmrs/openmrs-contrib-docker-cron-backup
+- https://github.com/robbyoconnor/openmrs-contrib-docker-cron-backup TODO: we should make our own fork, this thing is really cooool!
+- https://www.compilenrun.com/docs/devops/docker/docker-storage/docker-volume-drivers/#4-azure-file-storage-driver
+- https://dev.to/chattes/s3-as-docker-volumes-3bkd + Cloudflare R2
 
