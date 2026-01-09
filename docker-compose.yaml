@@ -60,13 +60,13 @@ services:
   # Runs the batch job queue in a separate container, untested but based on what Star Citizen does. Will test as a part of development.
   resonite-wiki-jobrunner:
     container_name: resonite-wiki-jobrunner
-    image: starcitizentools/mediawiki/smw-jobrunner-latest
+    image: starcitizentools/mediawiki:smw-jobrunner-latest
     restart: always
     networks:
       - wiki
     volumes:
-      - /config:/var/www/html/config:ro
-      - /config/LocalSettings.php:/var/www/html/LocalSettings.php:ro
+      - ./config:/var/www/html/config:ro
+      - ./config/LocalSettings.php:/var/www/html/LocalSettings.php:ro
     env_file:
       - .env
     environment:
