@@ -39,6 +39,21 @@ You can read more about this in a bunch of GitHub Issues:
    - Helpful scripts to handle some automated tasks.
 
 
+# Backups
+When the docker compose profile backups is include in startup: `docker compose up --profile backups`:
+
+1. Every day at 12:00AM server time, an automated MySQL backup is performed.
+   - This creates a tarbell of the database
+1. Every day at 01:00PM server time, an automated script runs, backing up the image folders
+1. Once both are complete they are synced to a Cloudflare R2 Bucket
+
+## Bucket Configuration
+- Bucket Name: wiki-backups
+- Lifecycle policies:
+   - Transition to Long Term storage after 5 days
+   - Delete after 1 year.
+
+
 ## Resources
 - https://www.mediawiki.org/wiki/MediaWiki-Docker
 - https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/core/+/HEAD/docker-compose.yml
