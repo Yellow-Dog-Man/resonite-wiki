@@ -12,5 +12,6 @@
         "Scribunto",
         "SITENAME",
         "starcitizentools"
-    ]
+    ],
+    "editor.wordWrap": "off"
 }
