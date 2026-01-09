@@ -26,6 +26,9 @@ services:
       - MW_DB_TYPE=mysql
       - MW_DB_SERVER=resonite-wiki-database
       - MW_DB_NAME=wiki_db
+      - MW_USER=Admin
+      - MW_PASS='${MW_ADMIN_PASSWORD}'
+      - MW_SITENAME=Resonite Wiki
     secrets:
       - db_user
       - db_password
@@ -33,6 +36,7 @@ services:
       - discord_webhook
       - mw_secret_key
       - mw_upgrade_key
+
   resonite-wiki-database:
     container_name: resonite-wiki-database
     image: mariadb
