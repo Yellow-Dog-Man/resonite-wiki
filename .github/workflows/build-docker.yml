@@ -3,6 +3,8 @@ name: 'Build and publish a Docker container image'
 on:
   workflow_dispatch:
   push:
+    paths-ignore:
+      - '*.md'
   release:
     types:
       - published
