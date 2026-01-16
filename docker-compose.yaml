@@ -69,6 +69,7 @@ services:
       timeout: 5s
       retries: 3
 
+  # We might want to use: https://github.com/mcuadros/ofelia instead
   # # Runs the batch job queue in a separate container, untested but based on what Star Citizen does. Will test as a part of development.
   # resonite-wiki-jobrunner:
   #   container_name: resonite-wiki-jobrunner

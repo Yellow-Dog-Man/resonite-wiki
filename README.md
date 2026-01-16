@@ -76,4 +76,5 @@ When the docker compose profile backups is include in startup: `docker compose u
 - https://mariadb.com/docs/server/server-management/automated-mariadb-deployment-and-administration/docker-and-mariadb/using-healthcheck-sh
 - https://medevel.com/install-mediawiki-using-docker-and-docker-compose/
 - https://www.mediawiki.org/wiki/Cli/guide/Docker-Development-Environment/LocalSettings.php
+- https://github.com/mcuadros/ofelia
 
