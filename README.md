@@ -54,6 +54,10 @@ When the docker compose profile backups is include in startup: `docker compose u
    - Delete after 1 year.
 
 
+## Commands
+- `docker compose up` - starts up everything with defaults
+- `docker compose up --profile backups`
+
 ## Resources
 - https://www.mediawiki.org/wiki/MediaWiki-Docker
 - https://gerrit.wikimedia.org/r/plugins/gitiles/mediawiki/core/+/HEAD/docker-compose.yml
@@ -68,4 +72,5 @@ When the docker compose profile backups is include in startup: `docker compose u
 - https://www.compilenrun.com/docs/devops/docker/docker-storage/docker-volume-drivers/#4-azure-file-storage-driver
 - https://dev.to/chattes/s3-as-docker-volumes-3bkd + Cloudflare R2
 - https://github.com/rexray/rexray
+- https://www.mediawiki.org/wiki/Manual:Upgrading
 
