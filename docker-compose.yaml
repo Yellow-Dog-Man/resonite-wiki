@@ -10,6 +10,7 @@ volumes:
 services:
   resonite-wiki:
     container_name: resonite-wiki
+    pull_policy: always
     image: ghcr.io/yellow-dog-man/resonite-wiki:main
     restart: unless-stopped
     networks:
