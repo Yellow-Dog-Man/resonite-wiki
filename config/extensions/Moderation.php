@@ -24,8 +24,6 @@ $wgGroupPermissions['bureaucrat']['replacetext'] = true;
 wfLoadExtension( 'MaintenanceShell' );
 $wgGroupPermissions['sysop']['maintenanceshell'] = true;
 
-wfLoadExtension( 'DeleteBatch' );
-
 $wgGroupPermissions['bureaucrat']['deletebatch'] = false;
 $wgGroupPermissions['sysop']['deletebatch'] = true;
 
@@ -52,7 +50,7 @@ $wgCaptchaTriggers['createaccount'] = true;
 $wgCaptchaTriggers['badlogin'] = false;
 $wgCaptchaTriggers['badloginperuser'] = true;
 
-$wgDataDumpDirectory = "$IP/${wgDBname}/";
+$wgDataDumpDirectory = "$IP/{$wgDBname}/";
 
 $wgDataDump = [
     'xml' => [
@@ -63,7 +61,7 @@ $wgDataDump = [
             'options' => [
                 '--full',
                 '--output',
-                "gzip:${wgDataDumpDirectory}" . '${filename}',
+                "gzip:{$wgDataDumpDirectory}" . '${filename}',
             ],
         ],
         'limit' => 10,
@@ -80,7 +78,7 @@ $wgDataDump = [
             'script' => '/usr/bin/zip',
             'options' => [
                 '-r',
-                "${wgDataDumpDirectory}" . '${filename}',
+                "{$wgDataDumpDirectory}" . '${filename}',
                 "$IP/images/"
             ],
         ],
