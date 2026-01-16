@@ -112,3 +112,7 @@ require_once "$IP/config/Themes.php";
 
 # Extensions
 require_once "$IP/config/Extensions.php";
+
+if ( $isLocal ) {
+    $wgShowExceptionDetails = true;
+}
