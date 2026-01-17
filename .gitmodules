@@ -82,3 +82,6 @@
 [submodule "extensions/OpenGraphMeta"]
 	path = extensions/OpenGraphMeta
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenGraphMeta
+[submodule "extensions/AWS"]
+	path = extensions/AWS
+	url = https://github.com/edwardspec/mediawiki-aws-s3

@@ -77,7 +77,8 @@ When the docker compose profile backups is include in startup: `docker compose u
 - https://github.com/selim13/docker-automysqlbackup
 - https://hub.docker.com/r/instrumentisto/restic
 - https://github.com/openmrs/openmrs-contrib-docker-cron-backup
-- https://github.com/robbyoconnor/openmrs-contrib-docker-cron-backup TODO: we should make our own fork, this thing is really cooool!
+- https://github.com/robbyoconnor/openmrs-contrib-docker-cron-backup 
+   - ofelia is probably better here.
 - https://www.compilenrun.com/docs/devops/docker/docker-storage/docker-volume-drivers/#4-azure-file-storage-driver
 - https://dev.to/chattes/s3-as-docker-volumes-3bkd + Cloudflare R2
 - https://github.com/rexray/rexray
@@ -86,4 +87,8 @@ When the docker compose profile backups is include in startup: `docker compose u
 - https://medevel.com/install-mediawiki-using-docker-and-docker-compose/
 - https://www.mediawiki.org/wiki/Cli/guide/Docker-Development-Environment/LocalSettings.php
 - https://github.com/mcuadros/ofelia
+- https://www.mediawiki.org/wiki/Extension:AWS
+- https://www.mediawiki.org/wiki/Manual:$wgLocalFileRepo
+- https://www.mediawiki.org/wiki/Manual:$wgFileBackends
+- https://www.mediawiki.org/wiki/Manual:$wgLockManagers
 

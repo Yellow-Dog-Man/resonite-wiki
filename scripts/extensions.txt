@@ -26,3 +26,4 @@ extensions/EmbedVideo https://github.com/StarCitizenWiki/mediawiki-extensions-Em
 extensions/DynamicPageList4 https://github.com/Universal-Omega/DynamicPageList4.git
 extensions/MaintenanceShell https://gerrit.wikimedia.org/r/mediawiki/extensions/MaintenanceShell
 extensions/OpenGraphMeta https://gerrit.wikimedia.org/r/mediawiki/extensions/OpenGraphMeta
+extensions/AWS https://github.com/edwardspec/mediawiki-aws-s3
