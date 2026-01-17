@@ -20,6 +20,7 @@ services:
     volumes:
       - wiki-images:/var/www/html/images:rw
       - ./config:/var/www/html/config:ro
+      - ./config/composer.local.json:/var/www/html/composer.local.json:ro
       - ./config/LocalSettings.php:/var/www/html/LocalSettings.php:ro
       - ./scripts/startup.sh:/usr/local/bin/startup.sh:ro
     env_file:
