@@ -68,6 +68,23 @@ Many scheduled or cron related tasks are handled by [ofelia](https://github.com/
 - The [MediaWiki Job Queue](https://www.mediawiki.org/wiki/Manual:Job_queue)
 - The RClone Sync process that sends SQL backups to R2. See [#backups](#database-backups)
 
+## Search
+
+Search requires 3 Extensions:
+- [Advanced Search](https://www.mediawiki.org/wiki/Extension:AdvancedSearch)
+   - Gives the power users the ability to search really well, UI stuff
+- [Cirrus Search](https://www.mediawiki.org/wiki/Extension:CirrusSearch)
+   - Search infrastructure and search index management
+- [Elastica](https://www.mediawiki.org/wiki/Extension:Elastica)
+   - Basically an SDK for Elasticsearch
+
+Search via Cirrus, supports ElasticSearch and OpenSearch, we have chosen [OpenSearch](https://opensearch.org/) for now.
+
+As this is a docker setup, it is fairly easy to swap between them by editing container images. When doing this ensure you check for compatibility.
+
+- TODO: https://starcitizentools.github.io/mediawiki-skins-Citizen/config/#search-suggestions
+   - We need to tie our theme into this 
+
 # Database
 
 ## Seeding
@@ -147,6 +164,7 @@ When the docker compose profile backups is include in startup: `docker compose u
 - https://www.mediawiki.org/wiki/Manual:$wgLockManagers
 - https://www.mediawiki.org/wiki/Extension:CirrusSearch
 - https://www.mediawiki.org/wiki/Extension:AdvancedSearch
+- https://starcitizentools.github.io/mediawiki-skins-Citizen/config/#search-suggestions
 
 ### Composer Stuff
 Some useful composer commands, used to find dependencies within extensions/skins.
