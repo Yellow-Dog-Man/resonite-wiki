@@ -88,3 +88,6 @@
 [submodule "extensions/DiscussionTools"]
 	path = extensions/DiscussionTools
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/DiscussionTools
+[submodule "extensions/TemplateStyles"]
+	path = extensions/TemplateStyles
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/TemplateStyles
