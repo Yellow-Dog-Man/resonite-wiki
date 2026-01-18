@@ -121,6 +121,8 @@ $customNamespaces = array_fill(2999, 3015, true);
 $wgUFAllowedNamespaces = array_merge($standardNamespaces, $customNamespaces);
 $wgUFAllowedNamespaces[-2] = true;
 
+require_once "$IP/config/extensions/Search.php";
+
 # https://github.com/wikimedia/mediawiki/blob/master/maintenance/Maintenance.php#L14
 # Do not load moderation, if in maintenance script
 if ( !defined( 'RUN_MAINTENANCE_IF_MAIN' ) ) {

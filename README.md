@@ -106,6 +106,8 @@ When the docker compose profile backups is include in startup: `docker compose u
 - https://www.mediawiki.org/wiki/Manual:$wgLocalFileRepo
 - https://www.mediawiki.org/wiki/Manual:$wgFileBackends
 - https://www.mediawiki.org/wiki/Manual:$wgLockManagers
+- https://www.mediawiki.org/wiki/Extension:CirrusSearch
+- https://www.mediawiki.org/wiki/Extension:AdvancedSearch
 
 
 ## Composer Stuff

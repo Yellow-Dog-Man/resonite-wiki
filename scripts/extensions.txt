@@ -29,3 +29,4 @@ extensions/OpenGraphMeta https://gerrit.wikimedia.org/r/mediawiki/extensions/Ope
 extensions/AWS https://github.com/edwardspec/mediawiki-aws-s3
 extensions/DiscussionTools https://gerrit.wikimedia.org/r/mediawiki/extensions/DiscussionTools
 extensions/TemplateStyles https://gerrit.wikimedia.org/r/mediawiki/extensions/TemplateStyles
+extensions/AdvancedSearch https://gerrit.wikimedia.org/r/mediawiki/extensions/AdvancedSearch
