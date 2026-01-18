@@ -2,8 +2,6 @@
 volumes:
   wiki-database-backups:
     driver: local
-  wiki-files-backups:
-    driver: local
 
 services:
   resonite-wiki:
@@ -43,6 +41,11 @@ services:
     depends_on:
       resonite-wiki-database:
         condition: service_healthy
+    labels:
+      ofelia.enabled: "true"
+      ofelia.job-exec.mw-job-queue.schedule: "@hourly"
+      #TODO: Logrotate?
+      ofelia.job-exec.mw-job-queue.command: "/usr/bin/php /var/www/wiki/maintenance/runJobs.php --maxtime=3600 > /var/log/runJobs.log 2>&1"
 
   resonite-wiki-database:
     container_name: resonite-wiki-database
@@ -70,30 +73,14 @@ services:
       timeout: 5s
       retries: 3
 
-  # We might want to use: https://github.com/mcuadros/ofelia instead
-  # # Runs the batch job queue in a separate container, untested but based on what Star Citizen does. Will test as a part of development.
-  # resonite-wiki-jobrunner:
-  #   container_name: resonite-wiki-jobrunner
-  #   image: starcitizentools/mediawiki:smw-jobrunner-latest
-  #   restart: always
-  #   networks:
-  #     - wiki
-  #   volumes:
-  #     - ./config:/var/www/html/config:ro
-  #     - ./config/LocalSettings.php:/var/www/html/LocalSettings.php:ro
-  #   env_file:
-  #     - .env
-  #   environment:
-  #     - MW_DB_TYPE=mysql
-  #     - MW_DB_SERVER=resonite-wiki-database
-  #     - MW_DB_NAME=wiki_db
-  #   secrets:
-  #     - db_user
-  #     - db_password
-  #     - mw_secret_key
-  #   depends_on:
-  #     - resonite-wiki-database
-  #     - resonite-wiki
+  # https://github.com/mcuadros/ofelia
+  ofelia:
+    image: mcuadros/ofelia:latest
+    depends_on:
+      - nginx
+    command: daemon --docker -f label=com.docker.compose.project=${COMPOSE_PROJECT_NAME}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
   # Everyday at 12:00AM make a backup of the database
   automysqlbackup:

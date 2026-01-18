@@ -38,7 +38,6 @@ You can read more about this in a bunch of GitHub Issues:
 - scripts
    - Helpful scripts to handle some automated tasks.
 
-
 # Backups
 When the docker compose profile backups is include in startup: `docker compose up --profile backups`:
 
@@ -52,7 +51,6 @@ When the docker compose profile backups is include in startup: `docker compose u
 - Lifecycle policies:
    - Transition to Long Term storage after 5 days
    - Delete after 1 year.
-
 
 ## Commands
 - `docker compose up` - starts up everything with defaults
@@ -109,10 +107,23 @@ When the docker compose profile backups is include in startup: `docker compose u
 - https://www.mediawiki.org/wiki/Extension:CirrusSearch
 - https://www.mediawiki.org/wiki/Extension:AdvancedSearch
 
-
 ## Composer Stuff
 - `grep -r "composer/installers.*1\.\*,>=1.0.1" extensions/*/composer.json skins/*/composer.json`
 - `grep -r "firebase/php-jwt.*5\.2" extensions/*/composer.json skins/*/composer.json`
 - Nukem for now.
 
+## Job Queue
+The mediawiki Job Queue, is a routine source of pain for us, for the new wiki setup we wanted to eliminate any possibility of it being a mess.
 
+- https://www.mediawiki.org/wiki/Manual:Job_queue
+- https://www.mediawiki.org/wiki/Manual:Job_queue#Cron
+
+`0 * * * * /usr/bin/php /var/www/wiki/maintenance/runJobs.php --maxtime=3600 > /var/log/runJobs.log 2>&1`
+
+`/usr/bin/php /var/www/wiki/maintenance/runJobs.php --maxtime=3600 > /var/log/runJobs.log 2>&1`
+
+```
+--ofelia.enabled: "true"
+--label ofelia.job-exec.mw-job-queue.schedule="@hourly"
+--label ofelia.job-exec.mw-job-queue.command="/usr/bin/php /var/www/wiki/maintenance/runJobs.php --maxtime=3600 > /var/log/runJobs.log 2>&1"
+```
