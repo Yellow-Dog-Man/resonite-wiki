@@ -71,11 +71,15 @@ When the docker compose profile backups is include in startup: `docker compose u
 - [ ] Requested extensions from GH
 - [ ] Swap to Ophelia from MWJobrunner and other cronjobs, ophelia is newer. MW Job Runner bulky no need. Ophelia make it better/easier
 
-### After "Upgrade"
+### During Upgrade Issues
+- https://github.com/Yellow-Dog-Man/Resonite-Issues/milestone/5
+
+### After "Upgrade" Issues
 - [ ] PDF
 - [ ] Math Rendering fix again
 - [ ] Cargo Stuff
 - [ ] OAuth!
+- https://github.com/Yellow-Dog-Man/Resonite-Issues/milestone/6
 
 ## Resources
 - https://www.mediawiki.org/wiki/MediaWiki-Docker
