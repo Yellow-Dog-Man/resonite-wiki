@@ -71,39 +71,38 @@ wfLoadExtension('EmailDNSValidate');
 
 //wfLoadExtension( 'OpenGraphMeta' );
 
-wfLoadExtension( 'Discord' );
-$wgDiscordUseEmojis = true;
-$wgDiscordUseEmojis = true;
-$wgDiscordWebhookURL = [ get_secret('discord_webhook', "REDACTED") ];
+if (isset($_ENV['DISCORD_ENABLED'])) {
+    wfLoadExtension( 'Discord' );
+    $wgDiscordUseEmojis = true;
+    $wgDiscordUseEmojis = true;
+    $wgDiscordWebhookURL = [ get_secret('discord_webhook', "REDACTED") ];
 
-$wgDiscordEmojis = array(
-    "PageContentSaveComplete" => ":pencil2:",
-    "PageSaveComplete" => ":pencil2:",
-    "PageDeleteComplete" => ":wastebasket:",
-    "ArticleUndelete" => ":wastebasket:",
-    "ArticleRevisionVisibilitySet" => ":spy:",
-    "ArticleProtectComplete" => ":lock:",
-    "PageMoveComplete" => ":truck:",
-    "LocalUserCreated" => ":wave:",
-    "BlockIpComplete" => ":no_entry_sign:",
-    "UnblockUserComplete" => ":no_entry_sign:",
-    "UserGroupsChanged" => ":people_holding_hands:",
-    "UploadComplete" => ":inbox_tray:",
-    "FileDeleteComplete" => ":wastebasket:",
-    "FileUndeleteComplete" => ":wastebasket:",
-    "AfterImportPage" => ":books:",
-    "ArticleMergeComplete" => ":card_box:",
-    "ApprovedRevsRevisionApproved" => ":white_check_mark:",
-    "ApprovedRevsRevisionUnapproved" => ":white_check_mark:",
-    "ApprovedRevsFileRevisionApproved" => ":white_check_mark:",
-    "ApprovedRevsFileRevisionUnapproved" => ":white_check_mark:",
-    "RenameUserComplete" => ":people_holding_hands:"
-);
-// See: https://www.mediawiki.org/wiki/Extension_default_namespaces
-$wgDiscordDisabledNS = [1198, 1199]; // Translations
-
-// Need to update to MediaWiki 1.42 +
-//wfLoadExtension( 'AdvancedSearch' );
+    $wgDiscordEmojis = array(
+        "PageContentSaveComplete" => ":pencil2:",
+        "PageSaveComplete" => ":pencil2:",
+        "PageDeleteComplete" => ":wastebasket:",
+        "ArticleUndelete" => ":wastebasket:",
+        "ArticleRevisionVisibilitySet" => ":spy:",
+        "ArticleProtectComplete" => ":lock:",
+        "PageMoveComplete" => ":truck:",
+        "LocalUserCreated" => ":wave:",
+        "BlockIpComplete" => ":no_entry_sign:",
+        "UnblockUserComplete" => ":no_entry_sign:",
+        "UserGroupsChanged" => ":people_holding_hands:",
+        "UploadComplete" => ":inbox_tray:",
+        "FileDeleteComplete" => ":wastebasket:",
+        "FileUndeleteComplete" => ":wastebasket:",
+        "AfterImportPage" => ":books:",
+        "ArticleMergeComplete" => ":card_box:",
+        "ApprovedRevsRevisionApproved" => ":white_check_mark:",
+        "ApprovedRevsRevisionUnapproved" => ":white_check_mark:",
+        "ApprovedRevsFileRevisionApproved" => ":white_check_mark:",
+        "ApprovedRevsFileRevisionUnapproved" => ":white_check_mark:",
+        "RenameUserComplete" => ":people_holding_hands:"
+    );
+    // See: https://www.mediawiki.org/wiki/Extension_default_namespaces
+    $wgDiscordDisabledNS = [1198, 1199]; // Translations
+}
 
 wfLoadExtension( 'NativeSvgHandler' );
 wfLoadExtension( 'InlineSVG' );
