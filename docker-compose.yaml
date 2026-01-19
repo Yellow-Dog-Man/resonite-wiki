@@ -45,9 +45,9 @@ services:
         condition: service_completed_successfully
     labels:
       ofelia.enabled: "true"
-      ofelia.job-exec.mw-job-queue.schedule: "@hourly"
+      ofelia.job-exec.mw-job-queue.schedule: "@every 30s"
       #TODO: Logrotate?
-      ofelia.job-exec.mw-job-queue.command: "/usr/bin/php /var/www/wiki/maintenance/runJobs.php --maxtime=3600 > /var/log/runJobs.log 2>&1"
+      ofelia.job-exec.mw-job-queue.command: "php /var/www/html/maintenance/run.php runJobs --maxtime=3600 > /var/log/runJobs.log 2>&1"
 
   resonite-wiki-database:
     container_name: resonite-wiki-database
