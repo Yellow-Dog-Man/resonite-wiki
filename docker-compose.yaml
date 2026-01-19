@@ -104,13 +104,14 @@ services:
       - PASSWORD_FILE=/run/secrets/db_password
       - BACKUPDIR=/backup
       - CRON_SCHEDULE=0 0 * * *
+      - LATEST=yes
     secrets:
       - db_user
       - db_password
     depends_on:
       - resonite-wiki-database
 
-  # Initialize database from backup if not seeded
+  # Initialize database from backup if not seeded, exits when done
   wiki-db-init:
     container_name: resonite-wiki-db-init
     image: rclone/rclone:latest
