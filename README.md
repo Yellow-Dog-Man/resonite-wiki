@@ -177,6 +177,7 @@ The automysqlbackup container uses these environment variables for configuration
 - https://www.mediawiki.org/wiki/Extension:CirrusSearch
 - https://www.mediawiki.org/wiki/Extension:AdvancedSearch
 - https://starcitizentools.github.io/mediawiki-skins-Citizen/config/#search-suggestions
+- Swap to: https://github.com/netresearch/ofelia, lower log level to warning/error, we don't need to see job queue empty all day.
 
 ### Composer Stuff
 Some useful composer commands, used to find dependencies within extensions/skins.
