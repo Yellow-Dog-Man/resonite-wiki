@@ -134,7 +134,10 @@ services:
     secrets:
       - mysql_root_password
     depends_on:
-      - resonite-wiki-database
+      resonite-wiki-database:
+        condition: service_healthy
+      wiki-db-init:
+        condition: service_completed_successfully
 
   # Initialize database from backup if not seeded, exits when done
   wiki-db-init:
