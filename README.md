@@ -95,6 +95,10 @@ Run this: `curl resonite-wiki-opensearch:9200/_cat/indices?v`, to check for conn
 `php extensions/CirrusSearch/maintenance/UpdateSuggesterIndex.php` - Update specifically the suggester index
 php extensions/CirrusSearch/maintenance/UpdateSuggesterIndex.php --recreate
 
+
+php maintenance/run.php CirrusSearch:UpdateSearchIndexConfig --startOver
+php maintenance/run.php CirrusSearch:ForceSearchIndex
+
 # Database
 
 ## Seeding

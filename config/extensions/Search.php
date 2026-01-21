@@ -27,6 +27,7 @@ $wgCirrusSearchShardCount = [
     'general' => 1,      // All talk namespaces, User, MediaWiki, etc.
     'component' => 1,    // Component namespace
     'protoflux' => 1,    // ProtoFlux namespace
+    'titlesuggest'=> 1
 ];
 
 $wgCirrusSearchReplicas = [
@@ -34,6 +35,7 @@ $wgCirrusSearchReplicas = [
     'general' => '0-2',
     'component' => '0-2',
     'protoflux' => '0-2',
+    'titlesuggest'=> '0-2',
 ];
 
 $wgCirrusSearchUseCompletionSuggester = 'yes';

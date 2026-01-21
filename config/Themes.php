@@ -17,6 +17,9 @@ $wgCitizenThemeDefault = 'dark';
 
 $wgCitizenEnableCommandPalette = true;
 $wgCitizenHeaderPosition = 'left';
+$wgCitizenEnableCollapsibleSections = true;
+
+$wgCitizenSearchGateway = 'mwRestApi';
 
 $wgSitename = "Resonite Wiki";
 $wgMetaNamespace = "Resonite_Wiki";
