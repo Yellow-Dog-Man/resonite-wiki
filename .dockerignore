@@ -10,7 +10,6 @@ docker-compose.yaml
 .dockerignore
 
 # Scripts and docs
-scripts/
 README.md
 
 # Volumes (not needed in image)
@@ -18,8 +17,6 @@ volumes/
 
 # Config (will be mounted as volume)
 config/
-
-scripts/
 
 # Environment files (secrets)
 .env

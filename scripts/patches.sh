@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if patches have already been applied
-if [ -f scripts/.patched ]; then
+if [ -f ./.patched ]; then
     echo "Patches already applied."
     exit 0
 fi
@@ -24,4 +24,4 @@ sed -i 's/^ALTER TABLE /\-- ALTER TABLE /g' sql/mysql/patch-pagelinks-drop-pl_ti
 sed -i '/^ALTER TABLE/,/;/d' sql/mysql/patch-categorylinks-pk.sql
 
 # Mark that patches have been applied
-touch scripts/.patched
+touch ./.patched
