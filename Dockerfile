@@ -31,6 +31,7 @@ WORKDIR /var/www/html
 RUN composer update --no-interaction
 
 COPY ./scripts/patches.sh /var/www/html/patches.sh
+RUN chmod +x /var/www/html/patches.sh
 RUN /var/www/html/patches.sh
 
 # Default command (inherited from base image)
