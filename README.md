@@ -80,11 +80,20 @@ Search requires 3 Extensions:
 
 Search via Cirrus, supports ElasticSearch and OpenSearch, we have chosen [OpenSearch](https://opensearch.org/) for now.
 
-As this is a docker setup, it is fairly easy to swap between them by editing container images. When doing this ensure you check for compatibility.
-
+### Citizen Integration
 - TODO: https://starcitizentools.github.io/mediawiki-skins-Citizen/config/#search-suggestions
    - We need to tie our theme into this
 - https://starcitizentools.github.io/mediawiki-skins-Citizen/customization/command-palette too 
+
+### Search Debugging
+
+Run: `php extensions/CirrusSearch/maintenance/UpdateSearchIndexConfig.php` once per init.
+If you need to restart do: `php extensions/CirrusSearch/maintenance/UpdateSearchIndexConfig.php -startOver`
+This builds the index: `php extensions/CirrusSearch/maintenance/ForceSearchIndex.php`
+Run this: `curl resonite-wiki-opensearch:9200/_cat/indices?v`, to check for connectivity.
+
+`php extensions/CirrusSearch/maintenance/UpdateSuggesterIndex.php` - Update specifically the suggester index
+php extensions/CirrusSearch/maintenance/UpdateSuggesterIndex.php --recreate
 
 # Database
 
