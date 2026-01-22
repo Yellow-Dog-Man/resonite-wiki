@@ -53,5 +53,4 @@ $wgLocalFileRepo = [
 $wgUploadDirectory = false;
 $wgUploadPath = false;
 
-
 ?>

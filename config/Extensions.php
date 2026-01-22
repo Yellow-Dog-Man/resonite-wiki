@@ -45,23 +45,24 @@ $wgParsoidSettings = [
 
 $wgVisualEditorParsoidAutoConfig = false; // to make linting work
 
-$wgVirtualRestConfig = [
-	'paths' => [],
-	'modules' => [
-		'parsoid' => [
-			'url' => 'https://www.mysite.wiki/w/rest.php',
-			'domain' => 'www.mysite.wiki',
-			'forwardCookies' => true,
-			'restbaseCompat' => false,
-			'timeout' => 30
-		],
-	],
-	'global' => [
-		'timeout' => 360,
-		'forwardCookies' => false,
-		'HTTPProxy' => null
-	]
-];
+// TODO: THIS IS WRONG
+// $wgVirtualRestConfig = [
+// 	'paths' => [],
+// 	'modules' => [
+// 		'parsoid' => [
+// 			'url' => 'https://www.mysite.wiki/w/rest.php',
+// 			'domain' => 'www.mysite.wiki',
+// 			'forwardCookies' => true,
+// 			'restbaseCompat' => false,
+// 			'timeout' => 30
+// 		],
+// 	],
+// 	'global' => [
+// 		'timeout' => 360,
+// 		'forwardCookies' => false,
+// 		'HTTPProxy' => null
+// 	]
+// ];
 
 wfLoadExtension( 'DiscussionTools' );
 
@@ -126,7 +127,7 @@ wfLoadExtension( 'CharInsert' );
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'TemplateStyles' );
 
-// Dumps
+// Dumps, disabled till new infra stable
 //wfLoadExtension( 'DumpsOnDemand' );
 
 $wgGroupPermissions['user']['dumpsondemand'] = false;
