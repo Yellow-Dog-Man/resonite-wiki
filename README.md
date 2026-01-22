@@ -62,6 +62,47 @@ M --> CFS3;
 
 ```
 
+## CDN
+
+We use Clouflare for our CDN. The wiki is routed via CF to improve page load time. 
+
+### Cache Rules
+
+Written out in pseudo-code, can be applied via Cloudflare Dashboard and eventually API maybe?
+
+#### Cache static assets aggressively
+```
+When incoming requests match:
+  Hostname equals "wiki.resonite.com"
+  AND (URI Path starts with "/images/" OR URI Path contains "/load.php")
+
+Then:
+  Cache eligibility: Eligible for cache
+  Edge Cache TTL: 1 month
+```
+
+#### Never cache special/dynamic pages
+```
+When incoming requests match:
+  Hostname equals "your-wiki.com"
+  AND (URI Path contains "Special:" OR URI Path contains "api.php")
+
+Then:
+  Cache eligibility: Bypass cache
+```
+
+#### Cache article pages conservatively
+```
+When incoming requests match:
+  Hostname equals "your-wiki.com"
+  AND URI Path starts with "/wiki/"
+
+Then:
+  Cache eligibility: Eligible for cache
+  Edge Cache TTL: Respect origin
+```
+
+
 ## Cron
 
 Many scheduled or cron related tasks are handled by [ofelia](https://github.com/mcuadros/ofelia). Such as:
@@ -79,7 +120,6 @@ Search requires 3 Extensions:
    - Basically an SDK for Elasticsearch
 
 Search via Cirrus, supports ElasticSearch and OpenSearch, we have chosen [OpenSearch](https://opensearch.org/) for now.
-
 
 ### Search Init
 
@@ -148,27 +188,36 @@ The automysqlbackup container uses these environment variables for configuration
    - [X] Images are now on R2
 - [X] [Advanced Search Setup](https://www.mediawiki.org/wiki/Extension:AdvancedSearch)
    - [X] Elastic Search is needed Q.Q
-- [ ] [Cloudflare setup](https://www.mediawiki.org/wiki/Manual:Cloudflare)
+- [X] [Cloudflare setup](https://www.mediawiki.org/wiki/Manual:Cloudflare)
    - Got started here with the R2 images but, need to do more to CDN the rest.
-- [ ] Requested extensions from GH
+   - [ ] Caddy Setup
+   - [ ] CF Rules
+- [X] Requested extensions from GH
 - [X] Swap to Ophelia from MWJobrunner and other cronjobs, ophelia is newer. MW Job Runner bulky no need. Ophelia make it better/easier
+- [X] Check Extensions list again
+- [X] CheckGH issue list once more too
+- [X] Swap to https://github.com/netresearch/ofelia
+- [ ] Test Backup command
+   - Ofelia handles this but I haven't actually tested it yet, I must.
+
+### Immediately After Upgrade
+These items require us to isolate Wiki Data to the new wiki rather than continuing to copy across a backup from old to new.
+Rather than doing hacky stuff, its easier to wait till we're on new.
+
+- [ ] Fix theming differences
+   - [ ] Background Color
+   - [ ] Footer
+   - [ ] List how you fixed those because you keep forgetting
 - [ ] Further group extensions into blocks of similar function
 - [ ] Additional Search Improvements
    - [ ] Default to full text search?
    - [ ] /pf, /cmp commands for pf nodes and components
    - [ ] Collapse translation results, En = En
-- [ ] Fix theming differences
-   - [ ] Background Color
-   - [ ] Footer
-   - [ ] List how you fixed those because you keep forgetting
-- [ ] Check Extensions list again
-- [ ] CheckGH issue list once more too
-- [X] Swap to https://github.com/netresearch/ofelia
-
-### During Upgrade Issues
 - https://github.com/Yellow-Dog-Man/Resonite-Issues/milestone/5
 
-### After "Upgrade" Issues
+### After "Upgrade"/Longterm Issues
+
+These ones take a bunch more effort, which means they are separate initiatives.
 - [ ] PDF
 - [ ] Math Rendering fix again
 - [ ] Cargo Stuff

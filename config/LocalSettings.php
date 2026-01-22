@@ -112,9 +112,15 @@ require_once "$IP/config/FileStorage.php";
 # Themes
 require_once "$IP/config/Themes.php";
 
+if (isset($_ENV['CF_CACHE_ENABLED'])) {
+    require_once "$IP/config/CDN.php";
+}
+
 # Extensions
 require_once "$IP/config/Extensions.php";
 
 if ( $isLocal ) {
     $wgShowExceptionDetails = true;
 }
+
+?>

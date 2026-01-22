@@ -40,6 +40,8 @@ services:
       - r2_endpoint
       - r2_access_key_id
       - r2_secret_access_key
+      - cf_zone_id
+      - cf_purge_token
     command: sh /usr/local/bin/startup.sh
     depends_on:
       resonite-wiki-database:
@@ -219,6 +221,10 @@ secrets:
     environment: R2_ACCESS_KEY_ID
   r2_secret_access_key:
     environment: R2_SECRET_ACCESS_KEY
+  cf_zone_id:
+    environment: CF_ZONE_ID
+  cf_purge_token:
+    environment: CF_PURGE_TOKEN
 
 networks:
   wiki:
