@@ -25,9 +25,13 @@ RUN apt-get install -y \
 #Keep cache small
 RUN rm -rf /var/lib/apt/lists/*
 
-# Update composer stuff
+# I added, this but relative file paths still didnt work, I dunno *shrug* - Prime
 WORKDIR /var/www/html
 
+# Override default compose local
+COPY ./config/wiki/composer.local.json /var/www/html/composer.local.json
+
+# Update composer stuff
 RUN composer update --no-interaction
 
 COPY ./scripts/patches.sh /var/www/html/patches.sh

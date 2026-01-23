@@ -197,7 +197,7 @@ The automysqlbackup container uses these environment variables for configuration
 - [X] Check Extensions list again
 - [X] CheckGH issue list once more too
 - [X] Swap to https://github.com/netresearch/ofelia
-- [ ] Test Backup command
+- [X] Test Backup command
    - Ofelia handles this but I haven't actually tested it yet, I must.
 - [ ] Isolate and minimize Env vars
    - We are currently sharing .env with all containers this gives everyone everything which is bad
