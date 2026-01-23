@@ -109,7 +109,7 @@ services:
     container_name: resonite-wiki-scheduler
     depends_on:
       - resonite-wiki
-    command: daemon --docker -f label=com.docker.compose.project=${COMPOSE_PROJECT_NAME}
+    command: daemon -f label=com.docker.compose.project=${COMPOSE_PROJECT_NAME}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
