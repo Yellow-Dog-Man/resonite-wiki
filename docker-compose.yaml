@@ -26,6 +26,7 @@ services:
       - MW_PASS = '${MW_ADMIN_PASSWORD}'
       - OPENSEARCH_ENABLED = '${OPENSEARCH_ENABLED}'
       - CF_CACHE_ENABLED = '${CF_CACHE_ENABLED}'
+      - DISCORD_ENABLED = '${DISCORD_ENABLED}'
     secrets:
       - db_password
       - smtp_password
