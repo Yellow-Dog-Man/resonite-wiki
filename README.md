@@ -69,6 +69,38 @@ M --> CFS3;
 
 ```
 
+## Full Diagram
+
+Mostly for thinking and talking!
+
+```mermaid
+graph LR;
+
+
+CFCDN[Cloudflare Image CDN];
+CFCDN2[Cloudflare Wiki CDN];
+CFS3[Cloudflare S3 API];
+R2[R2 Images Bucket];
+
+WEB[Web];
+W[Wiki];
+
+SQL[Maria DB];
+ES[Open Search];
+
+WEB -- Read Images --> MW[media.wiki.resonite.com] --> CFCDN --> R2;
+WEB -- Write Images --> W --> CFS3;
+CFS3-->R2;
+
+WEB --Read Articles--> CFCDN2 --> W;
+WEB --Write Articles --> W;
+W --Purge Cache--> CFCDN2;
+W <--> SQL;
+SQL --> R2B[R2 Backups Bucket]
+W <--Search--> ES;
+
+```
+
 ## CDN
 
 We use Cloudflare for our CDN. The wiki is routed via CF to improve page load time. 
@@ -217,8 +249,10 @@ Backup syncing is handled by [RClone](https://rclone.org/). We use the `sync`, c
    - [X] Elastic Search is needed Q.Q
 - [X] [Cloudflare setup](https://www.mediawiki.org/wiki/Manual:Cloudflare)
    - Got started here with the R2 images but, need to do more to CDN the rest.
-   - [ ] Caddy Setup
-   - [ ] CF Rules
+   - [ ] External Stuff
+      - [ ] Caddy Setup
+      - [ ] CF Rules
+      - [ ] Switchover Caddy stuff, "wiki2.resonite.com"
 - [X] Requested extensions from GH
 - [X] Swap to Ophelia from MWJobrunner and other cronjobs, ophelia is newer. MW Job Runner bulky no need. Ophelia make it better/easier
 - [X] Check Extensions list again
@@ -255,6 +289,15 @@ These ones take a bunch more effort, which means they are separate initiatives.
 - [ ] Cargo Stuff
 - [ ] OAuth!
 - https://github.com/Yellow-Dog-Man/Resonite-Issues/milestone/6
+
+
+## Switchover plan
+
+1. Mark current wiki as read-only.
+2. Start up new wiki as wiki2.resonite.com, it will be rw.
+3. Collect feedback, prioritize Reading content
+4. Shutdown old wiki
+5. Rename wiki2 -> wiki
 
 ## Resources
 - https://www.mediawiki.org/wiki/MediaWiki-Docker

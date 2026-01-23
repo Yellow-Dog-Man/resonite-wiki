@@ -47,7 +47,6 @@ services:
     labels:
       ofelia.enabled: "true"
       ofelia.job-exec.mw-job-queue.schedule: "@every 30s"
-      #TODO: Logrotate?
       ofelia.job-exec.mw-job-queue.command: "php /var/www/html/maintenance/run.php runJobs --maxtime=3600"
 
   resonite-wiki-database:
