@@ -1,8 +1,6 @@
 # Resonite Wiki
 
-A collection of files required to spin up the Resonite Wiki. 
-
-> WIP Right now. Feel free to observe, but let me cook - prime.
+A collection of files required to spin up the Resonite Wiki using docker compose.
 
 ## Goals
 1. Open Source 
@@ -11,14 +9,21 @@ A collection of files required to spin up the Resonite Wiki.
 3. Avoid Modifying the Containers at runtime.
 4. Proper Secret Management
 5. Resolving [All public issues involving the wiki](https://github.com/Yellow-Dog-Man/Resonite-Issues/issues?q=state%3Aopen%20label%3A%22Wiki%22)
-
+6. Documented
+7. Simple (As possible)
 
 ## Context
-Our current wiki(wiki.resonite.com) is running an older setup that mixes Docker hosting with extensive editing and tweaking of the Docker container. As changes to docker containers at runtime are difficult to persist and prevent operations like rebuilding a container etc. this old setup is being replaced with the contents of this repository.
+Our current wiki(wiki.resonite.com) is running an older setup that mixes Docker hosting with extensive editing and tweaking of the Docker container. 
+
+Changes to the docker container at runtime are difficult to manage and can be lost during rebuilding the container etc.
+
+We're rebuilding this setup, to align with the listed goals.
 
 You can read more about this in a bunch of GitHub Issues:
 - [Internal Issue](https://github.com/Yellow-Dog-Man/InternalDiscussion/issues/683)
 - [All public issues involving the wiki](https://github.com/Yellow-Dog-Man/Resonite-Issues/issues?q=state%3Aopen%20label%3A%22Wiki%22)
+
+Where we lamented about this issue before building this repo to fix it.
 
 ## Files
 - extensions/
@@ -31,10 +36,12 @@ You can read more about this in a bunch of GitHub Issues:
    - Contains our custom dockerfile for the mediawiki installation.
    - This can bake Extensions and skins into the docker container, avoiding the overhead and creating a stable image
 - config
-   - A collection of configuration files, managed and linked into the container
-   - LocalSettings.php is linked into the container via docker in the usual mechanism.
-   - Orchestrated for separation of concerns and maintenance
-   - Feel free to re-organize this, the initial split is arbitrary.
+   - A collection of configuration files for multiple services. 
+   - wiki
+      - managed and linked into the wiki
+      - LocalSettings.php is linked into the container via docker in the usual mechanism.
+      - Orchestrated for separation of concerns and maintenance
+      - Feel free to re-organize this, the initial split is arbitrary.
 - scripts
    - Helpful scripts to handle some automated tasks.
 
@@ -68,7 +75,7 @@ We use Clouflare for our CDN. The wiki is routed via CF to improve page load tim
 
 ### Cache Rules
 
-Written out in pseudo-code, can be applied via Cloudflare Dashboard and eventually API maybe?
+Written out in pseudo-code, can be applied via Cloudflare Dashboard and eventually via API maybe?
 
 #### Cache static assets aggressively
 ```
@@ -102,11 +109,11 @@ Then:
   Edge Cache TTL: Respect origin
 ```
 
-
 ## Cron
 
-Many scheduled or cron related tasks are handled by [ofelia](https://github.com/mcuadros/ofelia). Such as:
+Many scheduled or cron related tasks are handled by [ofelia](https://github.com/netresearch/ofelia). Such as:
 - The [MediaWiki Job Queue](https://www.mediawiki.org/wiki/Manual:Job_queue)
+   - `php /var/www/html/maintenance/run.php runJobs --maxtime=3600`
 - The RClone Sync process that sends SQL backups to R2. See [#backups](#database-backups)
 
 ## Search
@@ -121,10 +128,15 @@ Search requires 3 Extensions:
 
 Search via Cirrus, supports ElasticSearch and OpenSearch, we have chosen [OpenSearch](https://opensearch.org/) for now.
 
-### Search Init
+### Config
+
+Bare bones, we have no idea what we're doing. PR's welcome.
+
+### Init
 
 Once everything is up and running:
 
+TODO: update cirrus docs on mw docs, it uses old script paths
 ```
 php maintenance/run.php CirrusSearch:UpdateSearchIndexConfig --startOver
 php maintenance/run.php CirrusSearch:ForceSearchIndex
@@ -136,9 +148,9 @@ php maintenance/run.php CirrusSearch:UpdateSuggesterIndex
    - We need to tie our theme into this
 - https://starcitizentools.github.io/mediawiki-skins-Citizen/customization/command-palette too 
 
-### Search Debugging
+### Debugging
 
-Run this: `curl resonite-wiki-opensearch:9200/_cat/indices?v`, to check for connectivity.
+Run this: `curl resonite-wiki-opensearch:9200/_cat/indices?v`, to check for connectivity and indexes.
 
 # Database
 
@@ -152,12 +164,23 @@ mysqldump -h [other-db-host] -u [other-db-user] -p[other-db-password] [other-db-
 
 Manually upload it to the R2_BACKUP_BUCKET_NAME, start the docker stack and the old data will be ingested.
 
+## Public Seeding
+
+We're unable to make the full SQL dump available to the public, it contains backups of user data.
+
+TODO: We can use Data-Dump extensions for .XML downloads of the content, or expose selected table backups.
+LONG-TERM-TODO: separate data and account SQL dumps, treat them differently.
+
 ## Backups
 When the docker compose profile backups is include in startup: `docker compose up --profile backups`:
 
-1. Every day at 12:00AM server time, an automated MySQL backup is performed.
+1. Every day at 12:00AM server time, an automated SQL backup is performed.
    - This creates a tarbell of the database
 1. Every day at 01:00AM server time, an automated script runs, which syncs the database backups to Cloudflare R2
+
+The delay between the two operation is to give the SQL backup time to finish. It usually takes a minute or two though.
+
+We use [automysqlbackup](https://github.com/selim13/docker-automysqlbackup) which creates and automatically rotates backups into a folder structure for latest, daily, weekly and monthly backups. 
 
 ### Environment Variables
 
@@ -169,6 +192,7 @@ The automysqlbackup container uses these environment variables for configuration
 - `BACKUPDIR`: Backup directory inside container (/backup)
 - `CRON_SCHEDULE`: Cron schedule for automated backups (0 0 * * *)
 - `LATEST`: Create latest backup symlink (yes)
+- `DBNAMES`: always set this to `wiki_db`
 
 ### Bucket Configuration
 - Bucket Name: wiki-backups
@@ -176,11 +200,14 @@ The automysqlbackup container uses these environment variables for configuration
    - Transition to Long Term storage after 5 days
    - Delete after 1 year.
 
-# Commands
+### Backup Syncing
+Backup syncing is handled by [RClone](https://rclone.org/). We use the `sync`, command from RClone which will delete and move around files to match the Automysqlbackup folder structure.
+
+## Commands
 - `docker compose up` - starts up everything with defaults
 - `docker compose up --profile backups,search`
 
-# TODO
+## TODO
 - [x] On First install, restore the most up to date backup of DB
 - Backup
    - [X] Take regular automatic backups and send them to R2
@@ -202,7 +229,7 @@ The automysqlbackup container uses these environment variables for configuration
 - [ ] Isolate and minimize Env vars
    - We are currently sharing .env with all containers this gives everyone everything which is bad
 - [ ] Standardize R2 config, we've got it in two places, look for password file options?
-- [ ] Fix composer cache, copy composer.local to installation in docker file before run composer update FASTER
+- [X] Fix composer cache, copy composer.local to installation in docker file before run composer update FASTER
 
 ### Immediately After Upgrade
 These items require us to isolate Wiki Data to the new wiki rather than continuing to copy across a backup from old to new.
