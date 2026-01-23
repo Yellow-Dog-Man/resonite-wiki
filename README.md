@@ -254,6 +254,7 @@ These ones take a bunch more effort, which means they are separate initiatives.
 - https://starcitizentools.github.io/mediawiki-skins-Citizen/config/#search-suggestions
 - https://docs.opensearch.org/latest/install-and-configure/install-opensearch/docker/
 - https://gerrit.wikimedia.org/g/mediawiki/extensions/CirrusSearch/%2B/HEAD/README
+- https://github.com/netresearch/ofelia?tab=readme-ov-file#example-compose-setup
 
 ### Composer Stuff
 Some useful composer commands, used to find dependencies within extensions/skins.

@@ -16,9 +16,9 @@ services:
     ports:
       - 8888:80
     volumes:
-      - ./config:/var/www/html/config:ro
-      - ./config/composer.local.json:/var/www/html/composer.local.json:ro
-      - ./config/LocalSettings.php:/var/www/html/LocalSettings.php:ro
+      - ./config/wiki/:/var/www/html/config:ro
+      - ./config/wiki/composer.local.json:/var/www/html/composer.local.json:ro
+      - ./config/wiki/LocalSettings.php:/var/www/html/LocalSettings.php:ro
       - ./scripts/startup.sh:/usr/local/bin/startup.sh:ro
       - ./scripts/patches.sh:/usr/local/bin/patches.sh:ro
     env_file:
