@@ -31,12 +31,11 @@ WORKDIR /var/www/html
 # Override default compose local
 COPY ./config/wiki/composer.local.json /var/www/html/composer.local.json
 
+COPY --chmod=755 ./scripts/patches.sh /var/www/html/patches.sh
+RUN /var/www/html/patches.sh
+
 # Update composer stuff
 RUN composer update --no-interaction
-
-COPY ./scripts/patches.sh /var/www/html/patches.sh
-RUN chmod +x /var/www/html/patches.sh
-RUN /var/www/html/patches.sh
 
 # Default command (inherited from base image)
 CMD ["apache2-foreground"]
