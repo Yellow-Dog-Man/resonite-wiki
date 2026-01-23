@@ -150,19 +150,19 @@ services:
     container_name: resonite-wiki-db-init
     image: rclone/rclone:latest
     restart: "no"
+    env_file:
+      - .env
     networks:
       - wiki
     volumes:
       - ./scripts/restoreBackup.sh:/usr/local/bin/restoreBackup.sh:ro
-    env_file:
-      - .env
     environment:
-      - RCLONE_R2_TYPE=s3
-      - RCLONE_R2_PROVIDER=Cloudflare
-      - RCLONE_R2_ENDPOINT=${R2_ENDPOINT}
-      - RCLONE_R2_ACCESS_KEY_ID=${R2_ACCESS_KEY_ID}
-      - RCLONE_R2_SECRET_ACCESS_KEY=${R2_SECRET_ACCESS_KEY}
-      - RCLONE_R2_ACL=private
+      - RCLONE_CONFIG_R2_TYPE=s3
+      - RCLONE_CONFIG_R2_PROVIDER=Cloudflare
+      - RCLONE_CONFIG_R2_ENDPOINT=${R2_ENDPOINT}
+      - RCLONE_CONFIG_R2_ACCESS_KEY_ID=${R2_ACCESS_KEY_ID}
+      - RCLONE_CONFIG_R2_SECRET_ACCESS_KEY=${R2_SECRET_ACCESS_KEY}
+      - RCLONE_CONFIG_R2_ACL=private
     secrets:
       - mysql_root_password
       - r2_endpoint
@@ -180,20 +180,19 @@ services:
     container_name: resonite-wiki-r2-sync
     image: rclone/rclone:latest
     restart: unless-stopped
-    user: "${UID:-1000}:${GID:-1000}"
+    env_file:
+      - .env
     networks:
       - wiki
     volumes:
       - wiki-database-backups:/database-backups:rw
-    env_file:
-      - .env
     environment:
-      - RCLONE_R2_TYPE=s3
-      - RCLONE_R2_PROVIDER=Cloudflare
-      - RCLONE_R2_ENDPOINT=${R2_ENDPOINT}
-      - RCLONE_R2_ACCESS_KEY_ID=${R2_ACCESS_KEY_ID}
-      - RCLONE_R2_SECRET_ACCESS_KEY=${R2_SECRET_ACCESS_KEY}
-      - RCLONE_R2_ACL=private
+      - RCLONE_CONFIG_R2_TYPE=s3
+      - RCLONE_CONFIG_R2_PROVIDER=Cloudflare
+      - RCLONE_CONFIG_R2_ENDPOINT=${R2_ENDPOINT}
+      - RCLONE_CONFIG_R2_ACCESS_KEY_ID=${R2_ACCESS_KEY_ID}
+      - RCLONE_CONFIG_R2_SECRET_ACCESS_KEY=${R2_SECRET_ACCESS_KEY}
+      - RCLONE_CONFIG_R2_ACL=private
     entrypoint: /bin/sh
     command: -c "tail -f /dev/null"
     depends_on:

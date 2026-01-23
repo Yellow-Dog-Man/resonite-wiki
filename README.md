@@ -199,6 +199,10 @@ The automysqlbackup container uses these environment variables for configuration
 - [X] Swap to https://github.com/netresearch/ofelia
 - [ ] Test Backup command
    - Ofelia handles this but I haven't actually tested it yet, I must.
+- [ ] Isolate and minimize Env vars
+   - We are currently sharing .env with all containers this gives everyone everything which is bad
+- [ ] Standardize R2 config, we've got it in two places, look for password file options?
+- [ ] Fix composer cache, copy composer.local to installation in docker file before run composer update FASTER
 
 ### Immediately After Upgrade
 These items require us to isolate Wiki Data to the new wiki rather than continuing to copy across a backup from old to new.
@@ -255,6 +259,7 @@ These ones take a bunch more effort, which means they are separate initiatives.
 - https://docs.opensearch.org/latest/install-and-configure/install-opensearch/docker/
 - https://gerrit.wikimedia.org/g/mediawiki/extensions/CirrusSearch/%2B/HEAD/README
 - https://github.com/netresearch/ofelia?tab=readme-ov-file#example-compose-setup
+- https://rclone.org/docs/#environment-variables
 
 ### Composer Stuff
 Some useful composer commands, used to find dependencies within extensions/skins.
