@@ -229,6 +229,7 @@ Backup syncing is handled by [RClone](https://rclone.org/). We use the `sync`, c
 - [ ] Isolate and minimize Env vars
    - We are currently sharing .env with all containers this gives everyone everything which is bad
 - [ ] Standardize R2 config, we've got it in two places, look for password file options?
+   - Combining the container would be easier.
 - [X] Fix composer cache, copy composer.local to installation in docker file before run composer update FASTER
 
 ### Immediately After Upgrade

@@ -93,7 +93,7 @@ services:
     volumes:
       - opensearch-data:/usr/share/opensearch/data
 
-  # https://github.com/mcuadros/ofelia
+  # https://github.com/netresearch/ofelia
   ofelia:
     image: ghcr.io/netresearch/ofelia:latest
     container_name: resonite-wiki-scheduler
@@ -106,7 +106,7 @@ services:
     labels:
       ofelia.log-level: "WARN"
 
-  # TODO: 
+  # TODO: Combine backup containers into one for optimizations.
   # Everyday at 12:00AM make a backup of the database
   automysqlbackup:
     profiles: [backups]
