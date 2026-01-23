@@ -131,6 +131,7 @@ services:
       - ./config/backups/manual.sh:/usr/local/bin/manual.sh:ro
     environment:
       DBHOST: resonite-wiki-database
+      DBNAMES: wiki_db
       USERNAME: root
       PASSWORD_FILE: /run/secrets/mysql_root_password
       BACKUPDIR: /backup
