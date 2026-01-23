@@ -6,7 +6,7 @@
 wfLoadExtension('AWS');
 
 $wgAWSRegion = 'auto';
-$wgAWSBucketName = getenv('R2_IMAGES_BUCKET_NAME'); 
+$wgAWSBucketName = 'wiki-images';
 $s3ApiEndpoint = get_secret('r2_endpoint', "REDACTED"); //.eu.rs.cloudflarestorage.com
 $wgAWSBucketDomain = 'media.wiki.resonite.com';
 
