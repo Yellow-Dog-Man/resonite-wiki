@@ -43,7 +43,7 @@ services:
       resonite-wiki-database:
         condition: service_healthy
       resonite-wiki-utilities:
-        condition: service_started
+        condition: service_healthy
     labels:
       ofelia.enabled: "true"
       ofelia.job-exec.mw-job-queue.schedule: "@every 30s"
