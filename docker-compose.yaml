@@ -38,7 +38,7 @@ services:
       - r2_secret_access_key
       - cf_zone_id
       - cf_purge_token
-    command: sh /usr/local/bin/startup.sh
+    command: /usr/local/bin/startup.sh
     depends_on:
       resonite-wiki-database:
         condition: service_healthy
@@ -110,6 +110,7 @@ services:
     container_name: resonite-wiki-utilities
     image: ghcr.io/yellow-dog-man/resonite-wiki-utilities:main
     restart: unless-stopped
+    pull_policy: always
     networks:
       - wiki
     volumes:
