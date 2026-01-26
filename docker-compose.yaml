@@ -52,7 +52,6 @@ services:
     container_name: resonite-wiki-database
     image: mariadb
     restart: always
-    user: "${UID:-1000}:${GID:-1000}"
     networks:
       - wiki
     environment:
