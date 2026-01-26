@@ -33,6 +33,38 @@ $wgLogos = [
 	'icon' => "$prefix/1/11/Resonite_Wiki-Icon.png",
 ];
 
+// See: https://www.mediawiki.org/wiki/Manual:Footer
 
+// $skin->msg( 'test-page' )->inContentLanguage()->text() # some sort of I18N, todo.
 
+use MediaWiki\Html\Html;
+use MediaWiki\Title\Title;
+
+function createExternalLink(string $href, string $text) {
+	return Html::rawElement( 'a', 
+		[
+			'href' => $href,
+			'rel' => 'noreferrer noopener'
+		], 
+		$text
+	);
+}
+
+function createInternalLink(string $page, string $text) {
+	return Html::rawElement( 'a', 
+		[
+			'href' => Title::newFromText($page)->getFullURL()
+		], 
+		$text
+	);
+}
+
+$wgHooks['SkinAddFooterLinks'][] = function ( Skin $skin, string $key, array &$footerlinks ) {
+	if ( $key === 'places' ) {
+		$footerlinks['github'] =  createExternalLink('https://github.com/Yellow-Dog-Man/resonite-wiki', 'GitHub');
+		$footerlinks['website'] = createExternalLink('https://resonite.com', 'Main Website');
+		$footerlinks['steam'] =   createExternalLink('https://store.steampowered.com/app/2519830/Resonite/', 'Steam');
+		$footerlinks['policies']= createExternalLink('https://resonite.com/policies', 'Resonite Policies');
+	};
+};
 ?>
