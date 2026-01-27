@@ -47,6 +47,7 @@ services:
       ofelia.enabled: "true"
       ofelia.job-exec.mw-job-queue.schedule: "@every 30s"
       ofelia.job-exec.mw-job-queue.command: "php /var/www/html/maintenance/run.php runJobs --maxtime=3600"
+      ofelia.job-exec.mw-job-queue.user: "root"
 
   resonite-wiki-database:
     container_name: resonite-wiki-database
@@ -141,8 +142,10 @@ services:
       ofelia.enabled: "true"
       ofelia.job-exec.backup-db.schedule: "0 0 * * *" # 12:00 AM
       ofelia.job-exec.backup-db.command: "/usr/local/bin/manualBackup.sh" #I know the naming of this is bad, TODO I guess lol
+      ofelia.job-exec.backup-db.user: "root"
       ofelia.job-exec.sync-backups.schedule: "0 1 * * *" # 01:00 AM
       ofelia.job-exec.sync-backups.command: "rclone sync /backup r2:wiki-backups/database-backups --transfers 4 --checkers 8 --log-level INFO"
+      ofelia.job-exec.sync-backups.user: "root"
 
 secrets:
   mysql_root_password:
