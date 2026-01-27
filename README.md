@@ -214,6 +214,10 @@ The delay between the two operation is to give the SQL backup time to finish. It
 
 We use [automysqlbackup](https://github.com/selim13/docker-automysqlbackup) which creates and automatically rotates backups into a folder structure for latest, daily, weekly and monthly backups. 
 
+### Manual Backup Commands
+- Make a backup with: `docker exec resonite-wiki-utilities /usr/local/bin/manualBackup.sh`
+- Sync the backup to r2 with: `docker exec resonite-wiki-utilities rclone sync /backup r2:wiki-backups/database-backups --transfers 4 --checkers 8 --log-level INFO`
+
 ### Environment Variables
 
 The automysqlbackup container uses these environment variables for configuration:
@@ -337,3 +341,12 @@ These ones take a bunch more effort, which means they are separate initiatives.
 Some useful composer commands, used to find dependencies within extensions/skins.
 - `grep -r "composer/installers.*1\.\*,>=1.0.1" extensions/*/composer.json skins/*/composer.json`
 - `grep -r "firebase/php-jwt.*5\.2" extensions/*/composer.json skins/*/composer.json`
+
+
+### Run maintenance via docker
+
+`docker exec resonite-wiki php /var/www/html/maintenance/run.php namespaceDupes --fix`
+
+### Drop Down styling
+
+https://github.com/StarCitizenTools/mediawiki-skins-Citizen/blob/main/resources/skins.citizen.scripts/dropdown.js
