@@ -38,7 +38,7 @@ COPY --chmod=755 ./scripts/patches.sh /var/www/html/patches.sh
 RUN /var/www/html/patches.sh
 
 # Update composer stuff
-RUN composer update --no-interaction
+RUN composer update --no-dev --no-interaction
 
 # Default command (inherited from base image)
 CMD ["apache2-foreground"]
