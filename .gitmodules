@@ -100,3 +100,6 @@
 [submodule "extensions/CloudflarePurge"]
 	path = extensions/CloudflarePurge
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/CloudflarePurge
+[submodule "extensions/TemplateStylesExtender"]
+	path = extensions/TemplateStylesExtender
+	url = https://github.com/xtexx/mediawiki-extensions-TemplateStylesExtender
