@@ -9,6 +9,9 @@ wfLoadExtension( 'Moderation' );
 $wgGroupPermissions['moderator']['userrights'] = false;
 $wgAddGroups['moderator'][] = 'automoderated';
 $wgRemoveGroups['moderator'][] = 'automoderated';
+
+$wgGroupPermissions['moderator']['rollback'] = true;
+
 $wgGroupPermissions['automoderated']['skip-move-moderation'] = true;
 
 # This doesn't work right now we'll take a look later.
@@ -45,8 +48,8 @@ $wgCaptchaTriggers['edit'] = false;
 $wgCaptchaTriggers['create'] = false;
 $wgCaptchaTriggers['sendemail'] = false;
 $wgCaptchaTriggers['addurl'] = false;
-$wgCaptchaTriggers['createaccount'] = true;
 $wgCaptchaTriggers['badlogin'] = false;
+$wgCaptchaTriggers['createaccount'] = true;
 $wgCaptchaTriggers['badloginperuser'] = true;
 
 // TODO: move this, not moderation
