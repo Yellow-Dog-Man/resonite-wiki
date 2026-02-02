@@ -4,7 +4,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit;
 }
 
-wfLoadExtension( 'Moderation' );
+// Disabled as experiment
+//wfLoadExtension( 'Moderation' );
 
 $wgGroupPermissions['moderator']['userrights'] = false;
 $wgAddGroups['moderator'][] = 'automoderated';
