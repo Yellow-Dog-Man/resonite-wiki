@@ -11,7 +11,7 @@ $wgNamespacesWithSubpages[NS_MAIN] = true;
 $BASE_NAMESPACE_ID = 3000;
 
 // TODO: Function this?
-// Components e.g. Components:AxisAligner
+// Components e.g. Components:AxisAligner 3000, 3001
 define("NS_COMPONENT", $BASE_NAMESPACE_ID++);
 define("NS_COMPONENT_TALK", $BASE_NAMESPACE_ID++);
 $wgExtraNamespaces[NS_COMPONENT] = "Component";
@@ -20,7 +20,7 @@ $wgContentNamespaces[] = NS_COMPONENT;
 $wgNamespacesToBeSearchedDefault[NS_COMPONENT] = true;
 
 // ProtoFlux e.g. ProtoFlux:ZeroOne
-define("NS_PROTOFLUX", $BASE_NAMESPACE_ID++);
+define("NS_PROTOFLUX", $BASE_NAMESPACE_ID++); //3002, 3003
 define("NS_PROTOFLUX_TALK", $BASE_NAMESPACE_ID++);
 $wgExtraNamespaces[NS_PROTOFLUX] = "ProtoFlux";
 $wgExtraNamespaces[NS_PROTOFLUX_TALK] = "ProtoFlux_talk";
