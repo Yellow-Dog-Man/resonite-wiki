@@ -7,6 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // CDN Config
 $wgUseCdn = true;
+$wgUsePrivateIPs = true;
 
 // Cloudflare IP ranges Jan 2026 Update Periodically from: https://www.cloudflare.com/ips/
 $wgCdnServersNoPurge = [
@@ -26,10 +27,12 @@ $wgCdnServersNoPurge = [
     '2a06:98c0::/29',
     '2c0f:f248::/32',
 
-    // As per #34
-    '172.16.0.0/12',  // See #35 for information on *why* the full docker subnet.
+    // Docker subnet
+    // As per #34,#35
+    '172.16.0.0/12',
 ];
 
+//TODO: swap to multi-purge: https://www.mediawiki.org/wiki/Extension:MultiPurge
 wfLoadExtension( 'CloudflarePurge' );
 $wgCloudflarePurgeZoneID = get_secret('cf_zone_id');
 $wgCloudflarePurgeToken = get_secret('cf_purge_token');
