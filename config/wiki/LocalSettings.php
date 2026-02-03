@@ -11,7 +11,6 @@ function get_secret($name, $default = '') {
     return trim(file_get_contents('/run/secrets/' . $name)) ?: $default;
 }
 
-
 $wgDeprecationReleaseLimit = '1.0';
 $wgPhpCli = '/usr/local/bin/php';
 
@@ -87,9 +86,6 @@ $wgRightsPage = ""; # Set to the title of a wiki page that describes your licens
 $wgRightsUrl = "";
 $wgRightsText = "";
 $wgRightsIcon = "";
-
-
-
 
 # Path to the GNU diff3 utility. Used for conflict resolution.
 $wgDiff3 = "/usr/bin/diff3";
