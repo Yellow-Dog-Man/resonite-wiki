@@ -25,6 +25,11 @@ RUN apt-get install -y \
     p7zip-full \
     && docker-php-ext-install zip
 
+# Enable mod_remoteip: https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html
+RUN a2enmod remoteip
+COPY ./config/apache/remoteip.conf /etc/apache2/conf-available/remoteip.conf
+RUN a2enconf remoteip
+
 #Keep cache small
 RUN rm -rf /var/lib/apt/lists/*
 
