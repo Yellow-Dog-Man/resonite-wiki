@@ -25,6 +25,9 @@ $wgCdnServersNoPurge = [
     '2405:8100::/32',
     '2a06:98c0::/29',
     '2c0f:f248::/32',
+
+    // As per #34
+    '172.16.0.0/12',  // See #35 for information on *why* the full docker subnet.
 ];
 
 wfLoadExtension( 'CloudflarePurge' );
