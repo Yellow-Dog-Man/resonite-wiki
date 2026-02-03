@@ -21,7 +21,7 @@ We're rebuilding this setup, to align with the listed goals.
 
 You can read more about this in a bunch of GitHub Issues:
 - [Internal Issue](https://github.com/Yellow-Dog-Man/InternalDiscussion/issues/683)
-- [All public issues involving the wiki](https://github.com/Yellow-Dog-Man/Resonite-Issues/issues?q=state%3Aopen%20label%3A%22Wiki%22)
+- [All public issues involving the wiki](https://github.com/Yellow-Dog-Man/resonite-wiki/issues?q=is%3Aissue%20state%3Aopen)
 
 Where we lamented about this issue before building this repo to fix it.
 
