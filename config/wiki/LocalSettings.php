@@ -88,16 +88,7 @@ $wgRightsUrl = "";
 $wgRightsText = "";
 $wgRightsIcon = "";
 
-# As per #34
-# This variable is about telling MediaWiki an array of CIDR blocks or individual IP addresses where any 
-# IP address that is part of the range has to be considered as a Proxy server. 
-# This means that X-Forward-For headers will be respected for requests from IP addresses or ranges on this list.
-# 
-# See http://mediawiki.org/wiki/Manual:$wgCdnServersNoPurge 
-$wgCdnServersNoPurge = array_merge( $wgCdnServersNoPurge ?? [], [
-    '172.17.0.0/16',  // Docker default bridge
-    '172.18.0.0/16',  // Docker custom bridge, this might have to be changed depending on the internal network used on the machine.
-] );
+
 
 
 # Path to the GNU diff3 utility. Used for conflict resolution.
