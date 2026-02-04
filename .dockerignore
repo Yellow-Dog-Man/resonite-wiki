@@ -21,6 +21,7 @@ config/
 
 # Allow compose in
 !config/wiki/composer.local.json
+!config/apache/*
 
 # Environment files (secrets)
 .env
