@@ -118,10 +118,20 @@ if (isset($_ENV['CF_CACHE_ENABLED'])) {
 # Extensions
 require_once "$IP/config/Extensions.php";
 
+# This will log production info to the screen, do not use unless its local. NEVER in production
 if (isset($_ENV['DEBUG_WIKI'])) {
     require_once "$IP/config/Debug.php";
 }
 
+# Logs issues to a file
+$wgDebugLogFile = "/var/log/mediawiki/debug-{$wgDBname}.log";
+$wgDebugLogGroups = [
+    'exception' => "/var/log/mediawiki/exception.log",
+    'error' => "/var/log/mediawiki/error.log",
+];
+
+
+# Left for safety, see readme section for search
 //$wgDisableSearchUpdate = true;
 
 ?>

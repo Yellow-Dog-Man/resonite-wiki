@@ -356,3 +356,26 @@ Some useful composer commands, used to find dependencies within extensions/skins
 ### Drop Down styling
 
 https://github.com/StarCitizenTools/mediawiki-skins-Citizen/blob/main/resources/skins.citizen.scripts/dropdown.js
+
+## Mediawiki Log Settings
+
+Do not enable these unless there is a problem, they make a lot of noise.
+```php
+// Slow DB
+$wgDebugDumpSql = true;
+$wgDebugLogGroups['DBQuery'] = "/var/log/mediawiki/db-queries.log";
+$wgDebugLogGroups['slow-queries'] = "/var/log/mediawiki/slow-queries.log";
+
+// Log requests
+$wgDebugLogGroups['request'] = "/var/log/mediawiki/requests.log";
+
+//Cache/session issues:
+$wgDebugLogGroups['ObjectCache'] = "/var/log/mediawiki/cache.log";
+$wgDebugLogGroups['SessionManager'] = "/var/log/mediawiki/session.log";
+
+// If users are having login/permission problems
+$wgDebugLogGroups['authentication'] = "/var/log/mediawiki/auth.log";
+
+// Verbose debugging - generates LOTS of output
+$wgDebugLogFile = "/var/log/mediawiki/debug.log";
+```
