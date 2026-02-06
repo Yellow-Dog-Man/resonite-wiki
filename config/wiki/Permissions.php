@@ -40,4 +40,8 @@ $wgSpamRegex = ["/".                        # The "/" is the opening wrapper
                                           # The "*" is a repeater (zero or more times)
                                           # The "\s*" means to look for 0 or more amount of whitespace
 
+
+// Role to allow people (granted by sysop) to edit the global interface JS/CSS files.
+require_once "$IP/config/permissions/InterfaceEditor.php";
+
 ?>
