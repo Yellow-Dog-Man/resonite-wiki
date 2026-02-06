@@ -30,7 +30,10 @@ $wgCdnServersNoPurge = [
     // Docker subnet
     // As per #34,#35
     '172.16.0.0/12',
+    '127.0.0.1'
 ];
+
+$wgTrustedProxies = $wgCdnServersNoPurge;
 
 //TODO: swap to multi-purge: https://www.mediawiki.org/wiki/Extension:MultiPurge
 wfLoadExtension( 'CloudflarePurge' );
