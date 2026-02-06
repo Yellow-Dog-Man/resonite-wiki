@@ -127,10 +127,10 @@ if (isset($_ENV['DEBUG_WIKI'])) {
 $logBase = "/var/www/html/logs/";
 
 # Logs issues to a file
-$wgDebugLogFile = "${logBase}debug-{$wgDBname}.log";
+$wgDebugLogFile = "{$logBase}debug-{$wgDBname}.log";
 $wgDebugLogGroups = [
-    'exception' => "${logBase}exception.log",
-    'error' => "${logBase}error.log",
+    'exception' => "{$logBase}exception.log",
+    'error' => "{$logBase}error.log",
 ];
 // Don't output debug info to the page
 $wgDebugComments = false;
