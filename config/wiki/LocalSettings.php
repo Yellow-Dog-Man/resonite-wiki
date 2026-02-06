@@ -123,13 +123,18 @@ if (isset($_ENV['DEBUG_WIKI'])) {
     require_once "$IP/config/Debug.php";
 }
 
-# Logs issues to a file
-$wgDebugLogFile = "/var/log/mediawiki/debug-{$wgDBname}.log";
-$wgDebugLogGroups = [
-    'exception' => "/var/log/mediawiki/exception.log",
-    'error' => "/var/log/mediawiki/error.log",
-];
+# TODO: volume mount
+$logBase = "/var/www/html/logs/";
 
+# Logs issues to a file
+$wgDebugLogFile = "${logBase}debug-{$wgDBname}.log";
+$wgDebugLogGroups = [
+    'exception' => "${logBase}exception.log",
+    'error' => "${logBase}error.log",
+];
+// Don't output debug info to the page
+$wgDebugComments = false;
+$wgShowDebug = false;
 
 # Left for safety, see readme section for search
 //$wgDisableSearchUpdate = true;
