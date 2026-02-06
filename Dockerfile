@@ -44,7 +44,9 @@ RUN /var/www/html/patches.sh
 
 # Make logging folder so logs work.
 RUN mkdir -p /var/www/html/logs
-RUN chmod 755 /var/www/html/logs
+
+# think 777 is too open? fight me irl, this has cost me an hour to write a file to a directory like wtf.
+RUN chmod 777 /var/www/html/logs 
 
 # Update composer stuff
 RUN composer update --no-dev --no-interaction
