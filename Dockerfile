@@ -42,6 +42,10 @@ COPY ./config/wiki/composer.local.json /var/www/html/composer.local.json
 COPY --chmod=755 ./scripts/patches.sh /var/www/html/patches.sh
 RUN /var/www/html/patches.sh
 
+# Make logging folder so logs work.
+RUN mkdir -p /var/www/html/logs
+RUN chmod 755 /var/www/html/logs
+
 # Update composer stuff
 RUN composer update --no-dev --no-interaction
 
