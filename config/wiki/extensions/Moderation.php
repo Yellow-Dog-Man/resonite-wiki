@@ -13,6 +13,7 @@ $wgDisabledSpecialPages = [
 	'Recentchangeslinked',
     'RecentChangesLinked'
 ];
+wfLoadExtension( 'CrawlerProtection' );
 
 $wgGroupPermissions['moderator']['userrights'] = false;
 $wgAddGroups['moderator'][] = 'automoderated';

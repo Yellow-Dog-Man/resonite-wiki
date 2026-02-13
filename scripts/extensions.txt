@@ -36,3 +36,4 @@ extensions/CirrusSearch https://gerrit.wikimedia.org/r/mediawiki/extensions/Cirr
 
 extensions/CloudflarePurge https://gerrit.wikimedia.org/r/mediawiki/extensions/CloudflarePurge
 extensions/DisableSpecialPages https://gerrit.wikimedia.org/r/mediawiki/extensions/DisableSpecialPages
+extensions/CrawlerProtection https://github.com/mywikis/CrawlerProtection.git

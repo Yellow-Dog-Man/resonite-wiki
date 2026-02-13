@@ -106,3 +106,6 @@
 [submodule "extensions/DisableSpecialPages"]
 	path = extensions/DisableSpecialPages
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/DisableSpecialPages
+[submodule "extensions/CrawlerProtection"]
+	path = extensions/CrawlerProtection
+	url = https://github.com/mywikis/CrawlerProtection.git
