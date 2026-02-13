@@ -7,6 +7,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Disabled as experiment
 //wfLoadExtension( 'Moderation' );
 
+// DDOS
+wfLoadExtension( 'DisableSpecialPages' );
+$wgDisabledSpecialPages = [
+	'Recentchangeslinked',
+    'RecentChangesLinked'
+];
+
 $wgGroupPermissions['moderator']['userrights'] = false;
 $wgAddGroups['moderator'][] = 'automoderated';
 $wgRemoveGroups['moderator'][] = 'automoderated';

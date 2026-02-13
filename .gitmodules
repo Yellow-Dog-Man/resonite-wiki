@@ -103,3 +103,6 @@
 [submodule "extensions/TemplateStylesExtender"]
 	path = extensions/TemplateStylesExtender
 	url = https://github.com/xtexx/mediawiki-extensions-TemplateStylesExtender
+[submodule "extensions/DisableSpecialPages"]
+	path = extensions/DisableSpecialPages
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/DisableSpecialPages
