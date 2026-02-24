@@ -109,3 +109,6 @@
 [submodule "extensions/CrawlerProtection"]
 	path = extensions/CrawlerProtection
 	url = https://github.com/mywikis/CrawlerProtection.git
+[submodule "extensions/CheckUser"]
+	path = extensions/CheckUser
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/CheckUser

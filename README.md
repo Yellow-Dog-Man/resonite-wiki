@@ -345,6 +345,7 @@ Some useful composer commands, used to find dependencies within extensions/skins
 - `grep -r "composer/installers.*1\.\*,>=1.0.1" extensions/*/composer.json skins/*/composer.json`
 - `grep -r "johnkary/phpunit-speedtrap" extensions/*/composer.json skins/*/composer.json`
 - `grep -r "firebase/php-jwt.*5\.2" extensions/*/composer.json skins/*/composer.json`
+- `grep -r "firebase/php-jwt.*6.10.0" extensions/*/composer.json skins/*/composer.json`
 
 ## Logs
 - `docker compose logs -f --tail=20`
