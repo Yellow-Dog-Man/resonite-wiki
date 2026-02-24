@@ -336,6 +336,9 @@ These ones take a bunch more effort, which means they are separate initiatives.
 - https://gerrit.wikimedia.org/g/mediawiki/extensions/CirrusSearch/%2B/HEAD/README
 - https://github.com/netresearch/ofelia?tab=readme-ov-file#example-compose-setup
 - https://rclone.org/docs/#environment-variables
+- https://serverfault.com/questions/1160808/whats-the-best-method-to-implement-rate-limiting-with-apache
+- https://en.wikipedia.org/robots.txt
+- https://phoenixnap.com/kb/apache-mod-evasive
 
 ### Composer Stuff
 Some useful composer commands, used to find dependencies within extensions/skins.

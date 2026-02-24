@@ -25,10 +25,19 @@ RUN apt-get install -y \
     p7zip-full \
     && docker-php-ext-install zip
 
+# Apache Mods
 # Enable mod_remoteip: https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html
 RUN a2enmod remoteip
 COPY ./config/apache/remoteip.conf /etc/apache2/conf-available/remoteip.conf
 RUN a2enconf remoteip
+
+# https://phoenixnap.com/kb/apache-mod-evasive
+RUN apt-get install -y libapache2-mod-evasive
+RUN a2enmod evasive
+RUN mkdir -p /var/log/apache2/evasive
+RUN chown www-data:www-data /var/log/apache2/evasive
+COPY ./config/apache/evasive.conf /etc/apache2/conf-available/evasive.conf
+RUN a2enconf evasive
 
 #Keep cache small
 RUN rm -rf /var/lib/apt/lists/*
