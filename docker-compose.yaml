@@ -20,7 +20,7 @@ services:
       - ./config/wiki/composer.local.json:/var/www/html/composer.local.json:ro
       - ./config/wiki/LocalSettings.php:/var/www/html/LocalSettings.php:ro
       - ./scripts/startup.sh:/usr/local/bin/startup.sh:ro
-      - ./config/wiki/robots.txt:/var/www/html/config:ro
+      - ./config/wiki/robots.txt:/var/www/html/robots.txt:ro
     environment:
       MW_USER: Admin
       MW_PASS: '${MW_ADMIN_PASSWORD}'
