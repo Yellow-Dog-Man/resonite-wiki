@@ -20,6 +20,7 @@ services:
       - ./config/wiki/composer.local.json:/var/www/html/composer.local.json:ro
       - ./config/wiki/LocalSettings.php:/var/www/html/LocalSettings.php:ro
       - ./scripts/startup.sh:/usr/local/bin/startup.sh:ro
+      - ./config/wiki/robots.txt:/var/www/html/config:ro
     environment:
       MW_USER: Admin
       MW_PASS: '${MW_ADMIN_PASSWORD}'
@@ -145,7 +146,7 @@ services:
       retries: 3
       start_period: 10s
     labels:
-      ofelia.enabled: "true"
+      ofelia.enabled: "false"
       ofelia.job-exec.backup-db.schedule: "0 0 * * *" # 12:00 AM
       ofelia.job-exec.backup-db.command: "/usr/local/bin/manualBackup.sh" #I know the naming of this is bad, TODO I guess lol
       ofelia.job-exec.backup-db.user: "root"
