@@ -141,12 +141,7 @@ Crawl-delay: 5
 # /api/rest_v1/?doc.
 #
 User-agent: *
-Allow: /api.php?
-Allow: /load.php?
-Allow: /api/rest_v1/?doc
-Allow: /rest.php/site/v1/sitemap
 Disallow: /api/
-Disallow: /trap/
 Disallow: /Special:
 
 # Custom wiki.resonite.com rules
@@ -156,4 +151,3 @@ Disallow: /index.php?title=Special:Translate
 Disallow: /index.php?title=Special:CreateAccount
 Disallow: /index.php?title=Special:UserLogin
 Disallow: /index.php?title=Special:WhatLinksHere
-Disallow: /api.php
