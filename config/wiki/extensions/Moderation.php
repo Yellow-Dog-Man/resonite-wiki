@@ -15,6 +15,20 @@ $wgDisabledSpecialPages = [
 ];
 wfLoadExtension( 'CrawlerProtection' );
 
+$wgHooks['getUserPermissionsErrors'][] = function( $title, $user, $action, &$result ) {
+    if ( $title->isSpecial( 'Recentchanges' ) && !$user->isRegistered() ) {
+        $result = 'badaccess-group0';
+        return false;
+    }
+    return true;
+};
+
+// Remove translate permission from everyone (including logged-out)
+$wgGroupPermissions['*']['translate'] = false;
+
+// Grant it back to logged-in users
++$wgGroupPermissions['user']['translate'] = true;
+
 $wgGroupPermissions['moderator']['userrights'] = false;
 $wgAddGroups['moderator'][] = 'automoderated';
 $wgRemoveGroups['moderator'][] = 'automoderated';
