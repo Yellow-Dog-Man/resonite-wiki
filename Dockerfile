@@ -39,6 +39,10 @@ RUN chown www-data:www-data /var/log/apache2/evasive
 COPY ./config/apache/evasive.conf /etc/apache2/conf-available/evasive.conf
 RUN a2enconf evasive
 
+RUN a2enmod ratelimit
+COPY ./config/apache/ratelimit.conf /etc/apache2/conf-available/ratelimit.conf
+RUN a2enconf ratelimit
+
 #Keep cache small
 RUN rm -rf /var/lib/apt/lists/*
 
