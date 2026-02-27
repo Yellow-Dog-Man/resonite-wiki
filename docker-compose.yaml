@@ -147,7 +147,7 @@ services:
       retries: 3
       start_period: 10s
     labels:
-      ofelia.enabled: "false"
+      ofelia.enabled: "${WIKI_OFELIA_ENABLED:-false}"
       ofelia.job-exec.backup-db.schedule: "0 0 * * *" # 12:00 AM
       ofelia.job-exec.backup-db.command: "/usr/local/bin/manualBackup.sh" #I know the naming of this is bad, TODO I guess lol
       ofelia.job-exec.backup-db.user: "root"
