@@ -94,6 +94,12 @@ $wgDiff3 = "/usr/bin/diff3";
 //$wgParsoidSettings['html2wtLimits']['htmlSize'] = 200 * 1024;
 $wgParsoidSettings['wt2htmlLimits']['wikitextSize'] = 900 * 1024;
 
+// Add support for the resonite protocols to be used in the wiki
+$wgUrlProtocols = array_merge(
+    $wgUrlProtocols,
+    ['resrec://', 'resonite://', 'ressession://']
+);
+
 // Perl Compatible Regular Expressions backtrack memory limit
 ini_set( 'pcre.backtrack_limit', '1000000' );
 
