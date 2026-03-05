@@ -33,6 +33,9 @@ $wgLogos = [
 	'icon' => "$prefix/1/11/Resonite_Wiki-Icon.png",
 ];
 
+$wgAppleTouchIcon = "/apple-touch-icon.png";
+$wgFavicon = "/favicon.ico";
+
 // See: https://www.mediawiki.org/wiki/Manual:Footer
 
 // $skin->msg( 'test-page' )->inContentLanguage()->text() # some sort of I18N, todo.
