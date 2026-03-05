@@ -161,6 +161,9 @@ $customNamespaces = array_fill(2999, 3015, true);
 $wgUFAllowedNamespaces = array_merge($standardNamespaces, $customNamespaces);
 $wgUFAllowedNamespaces[-2] = true;
 
+// #38, Tech Tree Images are massive, increase the max image area to handle them due to "Error creating thumbnail: File with dimensions greater than 12.5 MP".
+$wgMaxImageArea = 4.9e7; // 49 megapixels
+
 # Only Included when ENV set.
 if (isset($_ENV['OPENSEARCH_ENABLED'])) {
     require_once "$IP/config/extensions/Search.php";
