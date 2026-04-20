@@ -134,4 +134,12 @@ $wgGroupPermissions['sysop']['view-image-dump'] = true;
 $wgGroupPermissions['sysop']['generate-dump'] = true;
 $wgGroupPermissions['sysop']['delete-dump'] = true;
 
+wfLoadExtension( 'CheckUser' );
+
+$wgGroupPermissions['sysop']['checkuser'] = true;
+$wgGroupPermissions['sysop']['checkuser-log'] = true;
+$wgGroupPermissions['sysop']['investigate'] = true;
+$wgGroupPermissions['sysop']['checkuser-temporary-account-log'] = true;
+$wgGroupPermissions['sysop']['checkuser-temporary-account-no-preference'] = true;
+
 ?>
