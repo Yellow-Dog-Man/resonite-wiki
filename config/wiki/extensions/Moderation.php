@@ -59,13 +59,20 @@ $wgCCTrailerFilter = true;
 $wgCCUserFilter = false;
 $wgDefaultUserOptions['usenewrc'] = 1;
 
-wfLoadExtensions([ 'ConfirmEdit', 'ConfirmEdit/QuestyCaptcha' ]);
+// For turnstile.
+wfLoadExtensions([ 'ConfirmEdit', 'ConfirmEdit/Turnstile' ]);
+$wgCaptchaClass = MediaWiki\Extension\ConfirmEdit\Turnstile\Turnstile::class;
 
+$wgTurnstileSiteKey= get_secret('turnstile_site_key', "REDACTED");
+$wgTurnstileSecretKey= get_secret('turnstile_secret_key', "REDACTED");
+
+// For questy captcha
+//wfLoadExtensions([ 'ConfirmEdit', 'ConfirmEdit/QuestyCaptcha' ]);
 // Add your questions in LocalSettings.php using this format:
-$wgCaptchaQuestions = [
-    'What application is this wiki about?' => 'resonite',
-    'What company made the application this wiki is about?' => ['yellow dog man', 'yellow dog man studios','frooxius', 'ydms', 'yellowdogmanstudios', 'yellow dog man studios s.r.o.'],
-];
+// $wgCaptchaQuestions = [
+//     'What application is this wiki about?' => 'resonite',
+//     'What company made the application this wiki is about?' => ['yellow dog man', 'yellow dog man studios','frooxius', 'ydms', 'yellowdogmanstudios', 'yellow dog man studios s.r.o.'],
+// ];
 
 $wgCaptchaTriggers['edit'] = false;
 $wgCaptchaTriggers['create'] = false;
