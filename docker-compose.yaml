@@ -180,7 +180,10 @@ secrets:
     environment: CF_ZONE_ID
   cf_purge_token:
     environment: CF_PURGE_TOKEN
-
+  turnstile_site_key:
+    environment: TURNSTILE_SITE_KEY
+  turnstile_secret_key:
+    environment: TURNSTILE_SECRET_KEY
 networks:
   wiki:
     driver: bridge
