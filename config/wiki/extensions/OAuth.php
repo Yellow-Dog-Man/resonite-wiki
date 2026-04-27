@@ -1,10 +1,8 @@
 <?php
 
 
-$wgPluggableAuth_EnableAutoLogin = true;
-
-
-$wgPluggableAuth_EnableLocalLogin = true; // Disable when OAuth Fully Ready
+// $wgPluggableAuth_EnableAutoLogin = true; // This causes Anon access to be disabled, no want.
+$wgPluggableAuth_EnableLocalLogin = true; // Disable when OAuth Fully Ready? Probably not for awhile?
 
 // Requirement for Pluggable Auth: 
 // https://www.mediawiki.org/wiki/Extension:PluggableAuth#Installation
