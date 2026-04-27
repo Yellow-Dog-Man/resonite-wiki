@@ -114,7 +114,7 @@
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/CheckUser
 [submodule "extensions/WSOAuth"]
 	path = extensions/WSOAuth
-	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/WSOAuth
+	url = https://github.com/Yellow-Dog-Man/mediawiki-extensions-WSOAuth.git
 [submodule "extensions/PluggableAuth"]
 	path = extensions/PluggableAuth
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth
