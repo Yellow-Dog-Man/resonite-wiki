@@ -2,3 +2,5 @@
 .gitattributes eol=lf
 .gitignore eol=lf
 .gitattributes eol=lf
+
+*.txt text eol=lf
