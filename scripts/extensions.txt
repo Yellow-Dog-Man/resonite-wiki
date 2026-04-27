@@ -39,3 +39,6 @@ extensions/DisableSpecialPages https://gerrit.wikimedia.org/r/mediawiki/extensio
 extensions/CrawlerProtection https://github.com/mywikis/CrawlerProtection.git
 
 extensions/CheckUser https://gerrit.wikimedia.org/r/mediawiki/extensions/CheckUser
+
+extensions/PluggableAuth https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth
+extensions/WSOAuth https://github.com/Yellow-Dog-Man/mediawiki-extensions-WSOAuth.git

@@ -383,3 +383,9 @@ $wgDebugLogGroups['authentication'] = "/var/log/mediawiki/auth.log";
 // Verbose debugging - generates LOTS of output
 $wgDebugLogFile = "/var/log/mediawiki/debug.log";
 ```
+
+## Manually add tables for CheckUser
+
+`docker exec resonite-wiki cat /var/www/html/extensions/CheckUser/schema/mysql/tables-generated.sql | docker exec -i <db_container_name> mysql -u<user> -p<pass> wiki_db`
+
+For some reason our install refused to install this automatically in the Update Script so we used the above to install the tables. I imagine its because our database is just screwed up from the old setup.
