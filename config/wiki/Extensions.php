@@ -176,4 +176,6 @@ if ( !defined( 'RUN_MAINTENANCE_IF_MAIN' ) ) {
     require_once "$IP/config/extensions/Moderation.php";
 }
 
+require_once "$IP/config/extensions/OAuth.php";
+
 ?>
