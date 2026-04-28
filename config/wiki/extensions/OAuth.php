@@ -30,7 +30,8 @@ $wgPluggableAuth_Config['Resonite'] = [
                 'bureaucrat' => [ 'tags' => 'team member' ]
             ]
         ]
-    ]
+    ],
+    'buttonLabelMessage' => 'oauth-login-resonite',
 ];
 
 // Give each user an automatic group
