@@ -34,6 +34,10 @@ $wgPluggableAuth_Config['Resonite'] = [
     'buttonLabelMessage' => 'oauth-login-resonite',
 ];
 
+// Default remember me to be on. The UI for login is a little confusing when using OAuth and the remember me box is often ignored.
+// By defaulting it to on, both OAuth and Username/Password sessions will get the correct session expiry.
+$wgRememberMe = 'always';
+
 // Give each user an automatic group
 // $wgOAuthAutoPopulateGroups = [ 'user' ]; 
 

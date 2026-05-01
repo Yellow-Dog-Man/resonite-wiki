@@ -145,7 +145,6 @@ $wgShowDebug = false;
 # Left for safety, see readme section for search
 //$wgDisableSearchUpdate = true;
 
-
 // Allows Common.css on login pages.
 $wgAllowSiteCSSOnRestrictedPages = true;
 
