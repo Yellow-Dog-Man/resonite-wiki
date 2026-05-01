@@ -114,6 +114,8 @@ require_once "$IP/config/Permissions.php";
 
 require_once "$IP/config/FileStorage.php";
 
+require_once "$IP/config/Session.php";
+
 # Themes
 require_once "$IP/config/Themes.php";
 
