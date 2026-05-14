@@ -41,6 +41,11 @@ $wgSpamRegex = ["/".                        # The "/" is the opening wrapper
                                           # The "\s*" means to look for 0 or more amount of whitespace
 
 
+// Allow bureaucrats and sysops to rename user accounts via Special:RenameUser
+// https://www.mediawiki.org/wiki/Help:Renameuser
+$wgGroupPermissions['bureaucrat']['renameuser'] = true;
+$wgGroupPermissions['sysop']['renameuser'] = true;
+
 // Role to allow people (granted by sysop) to edit the global interface JS/CSS files.
 require_once "$IP/config/permissions/InterfaceEditor.php";
 
