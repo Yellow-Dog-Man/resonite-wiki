@@ -292,7 +292,7 @@ These ones take a bunch more effort, which means they are separate initiatives.
 - [ ] PDF
 - [ ] Math Rendering fix again
 - [ ] Cargo Stuff
-- [ ] OAuth!
+- [X] OAuth!
 - https://github.com/Yellow-Dog-Man/Resonite-Issues/milestone/6
 
 
@@ -389,3 +389,15 @@ $wgDebugLogFile = "/var/log/mediawiki/debug.log";
 `docker exec resonite-wiki cat /var/www/html/extensions/CheckUser/schema/mysql/tables-generated.sql | docker exec -i <db_container_name> mysql -u<user> -p<pass> wiki_db`
 
 For some reason our install refused to install this automatically in the Update Script so we used the above to install the tables. I imagine its because our database is just screwed up from the old setup.
+
+## OAuth Notes
+
+### Users with duplicate accounts / "1" accounts
+
+run this:
+`select user_name, wsoauth_remote_name, wsoauth_provider_id from wsoauth_multiauth_mappings, user  where user_id = wsoauth_user and user_name like '%1';`
+
+Then run this:
+`DELETE wsoauth_multiauth_mappings FROM wsoauth_multiauth_mappings, user WHERE user_id = wsoauth_user AND user_name LIKE '% 1';`
+
+to fix.
