@@ -120,4 +120,4 @@
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth
 [submodule "extensions/Mpdf"]
 	path = extensions/Mpdf
-	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Mpdf
+	url = https://github.com/Yellow-Dog-Man/mediawiki-extensions-Mpdf.git

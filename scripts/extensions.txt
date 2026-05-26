@@ -43,4 +43,4 @@ extensions/CheckUser https://gerrit.wikimedia.org/r/mediawiki/extensions/CheckUs
 extensions/PluggableAuth https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth
 extensions/WSOAuth https://github.com/Yellow-Dog-Man/mediawiki-extensions-WSOAuth.git
 
-extensions/Mpdf https://gerrit.wikimedia.org/r/mediawiki/extensions/Mpdf
+extensions/Mpdf https://github.com/Yellow-Dog-Man/mediawiki-extensions-Mpdf.git
