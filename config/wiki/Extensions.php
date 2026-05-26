@@ -123,6 +123,9 @@ wfLoadExtension( 'Mpdf' );
 $wgMpdfSimpleOutput = true;
 $wgMpdfTab = true;
 
+//https://github.com/Yellow-Dog-Man/resonite-wiki/issues/31
+ini_set('pcre.backtrack_limit', '10000000'); 
+
 // mediawiki 1.42
 wfLoadExtension( 'CharInsert' );
 wfLoadExtension( 'WikiEditor' );
