@@ -16,6 +16,10 @@ fi
 sed -i 's/"phpunit\/phpunit": "9\.6\.21"/"phpunit\/phpunit": "^10.0"/' composer.json
 sed -i '/"johnkary\/phpunit-speedtrap":/d' composer.json
 
+# symfony/yaml 6.4.25 has security advisories, update to patched version
+# https://symfony.com/blog/symfony-6-4-40-released
+sed -i 's/"symfony\/yaml": "6\.4\.25"/"symfony\/yaml": "^6.4.40"/' composer.json
+
 # Any other manual commands to patch stuff here.
 
 # Mark that patches have been applied
