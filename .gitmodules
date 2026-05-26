@@ -118,3 +118,6 @@
 [submodule "extensions/PluggableAuth"]
 	path = extensions/PluggableAuth
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/PluggableAuth
+[submodule "extensions/Mpdf"]
+	path = extensions/Mpdf
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Mpdf

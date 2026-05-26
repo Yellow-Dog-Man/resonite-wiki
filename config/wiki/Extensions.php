@@ -117,10 +117,11 @@ $wgFileExtensions = array_merge(
 
 wfLoadExtension( 'DynamicPageList4' );
 
-// CUT PDF for new release, its complex and the rest of the plugins are not. TODO
-//https://www.mediawiki.org/wiki/Extension:Mpdf
-//wfLoadExtension( 'Mpdf' );
-//$wgMpdfSimpleOutput = true;
+// PDF export via Mpdf extension
+// https://www.mediawiki.org/wiki/Extension:Mpdf
+wfLoadExtension( 'Mpdf' );
+$wgMpdfSimpleOutput = true;
+$wgMpdfTab = true;
 
 // mediawiki 1.42
 wfLoadExtension( 'CharInsert' );
