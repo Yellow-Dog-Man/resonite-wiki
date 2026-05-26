@@ -18,12 +18,15 @@ RUN apt-get install -y default-mysql-client
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# PHP Zip & .7z support support
+# PHP Zip, .7z, and GD support (required for mPDF image rendering)
 RUN apt-get install -y \
     libzip-dev \
+    libpng-dev \
+    libjpeg-dev \
     unzip \
     p7zip-full \
-    && docker-php-ext-install zip
+    && docker-php-ext-configure gd --with-jpeg \
+    && docker-php-ext-install zip gd
 
 # Apache Mods
 # Enable mod_remoteip: https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html
