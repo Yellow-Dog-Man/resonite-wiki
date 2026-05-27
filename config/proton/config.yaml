@@ -27,7 +27,7 @@ services:
       user_agent: 'Resonite Wiki Proton Renderer'
       mw_req:
         method: get
-        uri: https://wiki.resonite.com/w/index.php
+        uri: http://resonite-wiki/index.php
         query:
           title: '{{request.params.title}}'
         headers:

@@ -48,9 +48,6 @@ RUN git clone https://github.com/wikimedia/mediawiki-services-chromium-render.gi
     && cd /opt/proton \
     && npm install
 
-# Copy custom config
-COPY ./config/proton/config.yaml /opt/proton/config.prod.yaml
-
 EXPOSE 3030
 
 CMD ["node", "/opt/proton/server.js", "-c", "/opt/proton/config.prod.yaml"]

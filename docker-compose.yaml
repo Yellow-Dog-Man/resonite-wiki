@@ -104,6 +104,8 @@ services:
     image: ghcr.io/yellow-dog-man/resonite-wiki-proton:main
     container_name: resonite-wiki-proton
     restart: unless-stopped
+    volumes:
+      - ./config/proton/config.yaml:/opt/proton/config.prod.yaml:ro
     networks:
       - wiki
     ports:
