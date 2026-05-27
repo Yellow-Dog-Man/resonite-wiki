@@ -6,6 +6,7 @@ FROM node:20-bookworm-slim
 # Based on: https://github.com/wikimedia/mediawiki-services-chromium-render/blob/master/.pipeline/blubber.yaml
 # https://doc.wikimedia.org/releng/blubber/ btw (looks kinda cool)
 RUN apt-get update && apt-get install -y \
+    ca-certificates \
     chromium \
     chromium-l10n \
     curl \
