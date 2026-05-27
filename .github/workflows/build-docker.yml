@@ -36,3 +36,10 @@ jobs:
           docker-image-name: '${{ github.repository_owner }}/resonite-wiki-utilities'
           docker-token: '${{ github.token }}'
           dockerfile-path: 'Dockerfile.utilities'
+
+      - name: 'Build Docker Proton'
+        uses: Yellow-Dog-Man/composite-actions-templates/.github/actions/docker-build-push@b4f799dd8ed863b11a1df3e27d1a243e89509dbe
+        with:
+          docker-image-name: '${{ github.repository_owner }}/resonite-wiki-proton'
+          docker-token: '${{ github.token }}'
+          dockerfile-path: 'Dockerfile.proton'

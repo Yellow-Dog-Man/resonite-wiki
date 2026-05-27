@@ -1,0 +1,54 @@
+# Proton - Chromium-based PDF renderer for MediaWiki
+# https://github.com/wikimedia/mediawiki-services-chromium-render
+FROM node:20-bookworm-slim
+
+# chromium, puppeteer stuff. 
+# Based on: https://github.com/wikimedia/mediawiki-services-chromium-render/blob/master/.pipeline/blubber.yaml
+# https://doc.wikimedia.org/releng/blubber/ btw (looks kinda cool)
+RUN apt-get update && apt-get install -y \
+    chromium \
+    chromium-l10n \
+    curl \
+    fonts-liberation \
+    fonts-noto \
+    fonts-noto-cjk \
+    fonts-noto-color-emoji \
+    fonts-noto-mono \
+    fonts-noto-ui-core \
+    fonts-noto-ui-extra \
+    fonts-freefont-ttf \
+    libnss3 \
+    libnspr4 \
+    libatk1.0-0 \
+    libatk-bridge2.0-0 \
+    libcups2 \
+    libdrm2 \
+    libdbus-1-3 \
+    libxkbcommon0 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxfixes3 \
+    libxrandr2 \
+    libgbm1 \
+    libpango-1.0-0 \
+    libcairo2 \
+    libasound2 \
+    --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
+
+# Puppeteer ENVs
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+ENV APP_ENABLE_CANCELLABLE_PROMISES=1
+
+WORKDIR /opt/proton
+
+RUN git clone https://github.com/wikimedia/mediawiki-services-chromium-render.git /opt/proton \
+    && cd /opt/proton \
+    && npm install
+
+# Copy custom config
+COPY config/proton/config.yaml /opt/proton/config.prod.yaml
+
+EXPOSE 3030
+
+CMD ["node", "/opt/proton/server.js", "-c", "/opt/proton/config.prod.yaml"]

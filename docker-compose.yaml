@@ -97,6 +97,22 @@ services:
       - opensearch-data:/usr/share/opensearch/data
 
   # https://github.com/netresearch/ofelia
+  resonite-wiki-proton:
+    container_name: resonite-wiki-proton
+    restart: unless-stopped
+    networks:
+      - wiki
+    ports:
+      - 3030:3030
+    depends_on:
+      - resonite-wiki
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3030/_info"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
   ofelia:
     image: ghcr.io/netresearch/ofelia:latest
     container_name: resonite-wiki-scheduler
