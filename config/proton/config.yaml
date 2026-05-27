@@ -19,7 +19,7 @@ metrics:
 # TODO: I don't really know what most of this does
 services:
   - name: proton
-    module: /srv/service/app.js
+    module: /opt/proton/app.js
     conf:
       port: 3030
       cors: '*'
