@@ -121,3 +121,6 @@
 [submodule "extensions/Mpdf"]
 	path = extensions/Mpdf
 	url = https://github.com/Yellow-Dog-Man/mediawiki-extensions-Mpdf.git
+[submodule "extensions/ElectronPdfService"]
+	path = extensions/ElectronPdfService
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/ElectronPdfService

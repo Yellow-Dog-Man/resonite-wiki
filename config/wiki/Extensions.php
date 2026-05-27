@@ -117,14 +117,21 @@ $wgFileExtensions = array_merge(
 
 wfLoadExtension( 'DynamicPageList4' );
 
-// PDF export via Mpdf extension
-// https://www.mediawiki.org/wiki/Extension:Mpdf
+
+// MPDF, OLD pdf stuff
 wfLoadExtension( 'Mpdf' );
 $wgMpdfSimpleOutput = true;
 $wgMpdfTab = true;
-
 //https://github.com/Yellow-Dog-Man/resonite-wiki/issues/31
 ini_set('pcre.backtrack_limit', '10000000'); 
+
+// PDF export via ElectronPdfService (Proton) extension
+// Uses headless Chromium via Proton service for proper template/styling rendering
+// https://www.mediawiki.org/wiki/Extension:ElectronPdfService
+// Apache proxies /api/rest_v1/page/pdf/ to the Proton service
+wfLoadExtension( 'ElectronPdfService' );
+$wgElectronPdfServiceRESTbaseURL = '/api/rest_v1/page/pdf/';
+
 
 // mediawiki 1.42
 wfLoadExtension( 'CharInsert' );

@@ -16,7 +16,22 @@ permissions:
 jobs:
   docker-build:
     runs-on: ubuntu-latest
-    name: 'Build & Publish Docker container image'
+    name: 'Build & Publish ${{ matrix.image-name }}'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image-name: "Wiki"
+            docker-image-name: '${{ github.repository }}'
+            dockerfile-path: 'Dockerfile'
+
+          - image-name: "Utilities"
+            docker-image-name: '${{ github.repository_owner }}/resonite-wiki-utilities'
+            dockerfile-path: 'Dockerfile.utilities'
+
+          - image-name: "Proton"
+            docker-image-name: '${{ github.repository_owner }}/resonite-wiki-proton'
+            dockerfile-path: 'Dockerfile.proton'
 
     steps:
       - name: 'Checkout current repository'
@@ -24,15 +39,9 @@ jobs:
         with:
           submodules: true
 
-      - name: 'Build main Wiki Docker image'
+      - name: 'Build Docker image'
         uses: Yellow-Dog-Man/composite-actions-templates/.github/actions/docker-build-push@b4f799dd8ed863b11a1df3e27d1a243e89509dbe
         with:
-          docker-image-name: '${{ github.repository }}'
+          docker-image-name: '${{ matrix.docker-image-name }}'
           docker-token: '${{ github.token }}'
-
-      - name: 'Build Docker utilities'
-        uses: Yellow-Dog-Man/composite-actions-templates/.github/actions/docker-build-push@b4f799dd8ed863b11a1df3e27d1a243e89509dbe
-        with:
-          docker-image-name: '${{ github.repository_owner }}/resonite-wiki-utilities'
-          docker-token: '${{ github.token }}'
-          dockerfile-path: 'Dockerfile.utilities'
+          dockerfile-path: '${{ matrix.dockerfile-path }}'

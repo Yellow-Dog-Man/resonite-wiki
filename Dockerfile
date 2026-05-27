@@ -46,6 +46,12 @@ RUN a2enmod ratelimit
 COPY ./config/apache/ratelimit.conf /etc/apache2/conf-available/ratelimit.conf
 RUN a2enconf ratelimit
 
+# Apache Proxy for Proton PDF service
+# Proxies /api/rest_v1/page/pdf/ to the Proton (Chromium PDF) service
+RUN a2enmod proxy proxy_http
+COPY ./config/apache/proxy-pdf.conf /etc/apache2/conf-available/proxy-pdf.conf
+RUN a2enconf proxy-pdf
+
 #Keep cache small
 RUN rm -rf /var/lib/apt/lists/*
 

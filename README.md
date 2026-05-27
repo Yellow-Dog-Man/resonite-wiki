@@ -184,6 +184,23 @@ php maintenance/run.php CirrusSearch:UpdateSuggesterIndex
 
 Run this: `curl resonite-wiki-opensearch:9200/_cat/indices?v`, to check for connectivity and indexes.
 
+## PDF Export
+
+PDF export uses the [ElectronPdfService](https://www.mediawiki.org/wiki/Extension:ElectronPdfService) extension backed by a [Proton](https://www.mediawiki.org/wiki/Proton) service. Proton is a Node.js service that renders wiki pages to PDF using headless Chromium via Puppeteer. This provides proper rendering of templates, styling, and all page content.
+
+The request flow is:
+1. User triggers a PDF download from the wiki sidebar or Special:DownloadAsPdf page
+2. ElectronPdfService extension redirects to `/api/rest_v1/page/pdf/{PageName}`
+3. Apache proxies the request to the Proton container via `mod_proxy`
+4. Proton fetches the page HTML from the wiki, launches Chromium, and generates a PDF
+5. The PDF is streamed back to the user
+
+### Services
+
+- `resonite-wiki-proton` - The Proton container running on port 3030
+- Configuration: `config/proton/config.yaml`
+- Dockerfile: `Dockerfile.proton`
+
 # Database
 
 ## Seeding
@@ -289,7 +306,7 @@ Rather than doing hacky stuff, its easier to wait till we're on new.
 ### After "Upgrade"/Long term Issues
 
 These ones take a bunch more effort, which means they are separate initiatives.
-- [ ] PDF
+- [x] PDF
 - [ ] Math Rendering fix again
 - [ ] Cargo Stuff
 - [X] OAuth!
@@ -346,6 +363,7 @@ Some useful composer commands, used to find dependencies within extensions/skins
 - `grep -r "johnkary/phpunit-speedtrap" extensions/*/composer.json skins/*/composer.json`
 - `grep -r "firebase/php-jwt.*5\.2" extensions/*/composer.json skins/*/composer.json`
 - `grep -r "firebase/php-jwt.*6.10.0" extensions/*/composer.json skins/*/composer.json`
+- `grep -r "symfony/yaml.*6" extensions/*/composer.json skins/*/composer.json`
 
 ## Logs
 - `docker compose logs -f --tail=20`
@@ -401,3 +419,11 @@ Then run this:
 `DELETE wsoauth_multiauth_mappings FROM wsoauth_multiauth_mappings, user WHERE user_id = wsoauth_user AND user_name LIKE '% 1';`
 
 to fix.
+
+## Copying Config files into Docker
+
+Our .dockerignore filters out most config files, preventing them from being `COPY`'ied to containers. This is usually because mounting the container via volumes is a better strategy.
+
+Should you need to override this, you will have to add an exception to the .dockerignore file for your config. This is common for Apache tweaks to the main docker container, and the whole Proton/PDF Setup.
+
+TODO: Resolve this smartly using paths etc.
