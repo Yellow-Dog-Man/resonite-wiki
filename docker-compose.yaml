@@ -108,8 +108,6 @@ services:
       - wiki
     ports:
       - 3030:3030
-    depends_on:
-      - resonite-wiki
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3030/_info"]
       interval: 30s
