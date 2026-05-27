@@ -98,6 +98,8 @@ services:
 
   # https://github.com/netresearch/ofelia
   resonite-wiki-proton:
+    pull_policy: always
+    image: ghcr.io/yellow-dog-man/resonite-wiki-proton:main
     container_name: resonite-wiki-proton
     restart: unless-stopped
     networks:
