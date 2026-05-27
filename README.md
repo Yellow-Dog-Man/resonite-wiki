@@ -419,3 +419,11 @@ Then run this:
 `DELETE wsoauth_multiauth_mappings FROM wsoauth_multiauth_mappings, user WHERE user_id = wsoauth_user AND user_name LIKE '% 1';`
 
 to fix.
+
+## Copying Config files into Docker
+
+Our .dockerignore filters out most config files, preventing them from being `COPY`'ied to containers. This is usually because mounting the container via volumes is a better strategy.
+
+Should you need to override this, you will have to add an exception to the .dockerignore file for your config. This is common for Apache tweaks to the main docker container, and the whole Proton/PDF Setup.
+
+TODO: Resolve this smartly using paths etc.
