@@ -45,6 +45,8 @@ services:
     depends_on:
       resonite-wiki-database:
         condition: service_healthy
+      resonite-wiki-proton:
+        condition: service_healthy
       resonite-wiki-utilities:
         condition: service_started
     labels:
