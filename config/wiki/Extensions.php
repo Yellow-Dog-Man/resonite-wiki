@@ -23,6 +23,8 @@ $wgPFEnableStringFunctions = true;
 
 wfLoadExtension( 'Cite' );
 
+wfLoadExtension( 'Analytics' );
+
 wfLoadExtension( 'HeaderFooter' );
 
 wfLoadExtension( 'Math' );

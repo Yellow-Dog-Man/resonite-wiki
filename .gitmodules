@@ -122,3 +122,6 @@
 	path = extensions/ElectronPdfService
 	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/ElectronPdfService
 	branch = REL1_45
+[submodule "extensions/Analytics"]
+	path = extensions/Analytics
+	url = https://gerrit.wikimedia.org/r/mediawiki/extensions/Analytics
