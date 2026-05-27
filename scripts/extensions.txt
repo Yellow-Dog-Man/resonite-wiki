@@ -44,3 +44,4 @@ extensions/PluggableAuth https://gerrit.wikimedia.org/r/mediawiki/extensions/Plu
 extensions/WSOAuth https://github.com/Yellow-Dog-Man/mediawiki-extensions-WSOAuth.git
 
 extensions/Mpdf https://github.com/Yellow-Dog-Man/mediawiki-extensions-Mpdf.git
+extensions/ElectronPdfService https://gerrit.wikimedia.org/r/mediawiki/extensions/ElectronPdfService
