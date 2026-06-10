@@ -36,8 +36,8 @@ $wgCdnServersNoPurge = [
 $wgTrustedProxies = $wgCdnServersNoPurge;
 
 //TODO: swap to multi-purge: https://www.mediawiki.org/wiki/Extension:MultiPurge
-wfLoadExtension( 'CloudflarePurge' );
-$wgCloudflarePurgeZoneID = get_secret('cf_zone_id');
-$wgCloudflarePurgeToken = get_secret('cf_purge_token');
+// wfLoadExtension( 'CloudflarePurge' );
+// $wgCloudflarePurgeZoneID = get_secret('cf_zone_id');
+// $wgCloudflarePurgeToken = get_secret('cf_purge_token');
 
 ?>
