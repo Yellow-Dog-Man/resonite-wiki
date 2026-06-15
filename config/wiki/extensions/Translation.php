@@ -7,17 +7,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 wfLoadExtension( 'UniversalLanguageSelector' );
 wfLoadExtension( 'Translate' );
 
-// Prevent users who are not automoderated from translating 
-$wgGroupPermissions['user']['translate'] = false;
-$wgGroupPermissions['user']['translate-messagereview'] = false;
-$wgGroupPermissions['user']['translate-import'] = false;
-$wgGroupPermissions['user']['pagetranslation'] = false;
-
-// Allow automoderated users to translate
-$wgGroupPermissions['automoderated']['translate'] = true;
-$wgGroupPermissions['automoderated']['translate-messagereview'] = true;
-$wgGroupPermissions['automoderated']['translate-import'] = true;
-$wgGroupPermissions['automoderated']['pagetranslation'] = true;
+$wgGroupPermissions['user']['translate'] = true;
+$wgGroupPermissions['user']['translate-messagereview'] = true;
+$wgGroupPermissions['user']['translate-import'] = true;
+$wgGroupPermissions['user']['pagetranslation'] = true;
+$wgGroupPermissions['user']['skip-move-moderation'] = true;
 
 // Not used
 $wgGroupPermissions['user']['translate-groupreview'] = true;

@@ -23,19 +23,12 @@ $wgHooks['getUserPermissionsErrors'][] = function( $title, $user, $action, &$res
     return true;
 };
 
-// Remove translate permission from everyone (including logged-out)
-$wgGroupPermissions['*']['translate'] = false;
-
-// Grant it back to logged-in users
-+$wgGroupPermissions['user']['translate'] = true;
-
+// Allow moderators to automoderate people, It doesn't actually do anything atm
 $wgGroupPermissions['moderator']['userrights'] = false;
 $wgAddGroups['moderator'][] = 'automoderated';
 $wgRemoveGroups['moderator'][] = 'automoderated';
 
 $wgGroupPermissions['moderator']['rollback'] = true;
-
-$wgGroupPermissions['automoderated']['skip-move-moderation'] = true;
 
 # This doesn't work right now we'll take a look later.
 //wfLoadExtension( 'TorBlock' );
