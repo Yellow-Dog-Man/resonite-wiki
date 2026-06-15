@@ -3,25 +3,45 @@
 # TODO: rate limits? Can do in caddy? Has a queue system?
 
 # Number of worker processes to spawn.
+# Set to 0 to run everything in a single process without clustering.
+# Use 'ncpu' to run as many workers as there are CPU units
 num_workers: 0
+
+# Log error messages and gracefully restart a worker if v8 reports that it
+# uses more heap (note: not RSS) than this many mb.
+worker_heap_limit_mb: 250
 
 # Logger info
 logging:
-  level: info
+  level: trace
   streams:
-  - type: stdout
-    named_levels: true
+  - type: stdout # log to stdout
+    named_levels: true # emit log level name instead of index. e.g. INFO vs 30
+#  # Use gelf-stream -> logstash
+#  - type: gelf
+#    host: logstash1003.eqiad.wmnet
+#    port: 12201
 
 # Statsd metrics reporter
 metrics:
-  type: log
+  #type: log
+  #host: localhost
+  #port: 8125
 
-# TODO: I don't really know what most of this does
 services:
   - name: proton
-    module: /opt/proton/app.js
+    # a relative path or the name of an npm package, if different from name
+    module: ./app.js
+    # optionally, a version constraint of the npm package
+    # version: ^0.4.0
+    # per-service config
     conf:
       port: 3030
+      # interface: localhost # uncomment to only listen on localhost
+      # more per-service config settings
+      # the location of the spec, defaults to spec.yaml if not specified
+      # spec: ./spec.yaml
+      # allow cross-domain requests to the API (default '*')
       cors: '*'
       cache_control: 's-maxage=600, max-age=600'
       user_agent: 'Resonite Wiki Proton Renderer'
@@ -30,9 +50,13 @@ services:
         uri: https://wiki.resonite.com/index.php
         query:
           title: '{{request.params.title}}'
+          pdftheme: '{{if(request.query.theme, request.query.theme, "normal")}}'
         headers:
           host: '{{request.params.domain}}'
           x-subdomain: '{{if(request.params.mobile, "M", "")}}'
+      # https://github.com/GoogleChrome/puppeteer/blob/v0.13.0/docs/api.md#pagepdfoptions
+      # Explicitly override defaults so that we don't have unexected results
+      # after puppeteer upgrades
       pdf_options:
         scale: 1
         displayHeaderFooter: false
@@ -40,11 +64,7 @@ services:
         landscape: false
         pageRanges: ''
         format: 'a4'
-        margin:
-          top: '0.5in'
-          right: '0.5in'
-          bottom: '0.75in'
-          left: '0.5in'
+      # https://github.com/GoogleChrome/puppeteer/blob/v0.13.0/docs/api.md#puppeteerlaunchoptions
       puppeteer_options:
         timeout: 30000
         headless: true
@@ -59,7 +79,14 @@ services:
           - '--no-first-run'
           - '--single-process'
           - '--no-zygote'
+      # Regexp of domains the browser is not allowed to access during rendering the page.
+      # Case-insensitive, gets anchored automatically.
+      # host_blacklist: '^(?!localhost$).*'
+      # the maximum number of puppeteer instances that can be launched at a time
       render_concurrency: 1
+      # don't wait to render a PDF after this many seconds
       render_queue_timeout: 60
+      # the number of seconds before puppeteer terminates the browser instance
       render_execution_timeout: 90
+      # maximum allowed number of pending jobs
       max_render_queue_size: 3

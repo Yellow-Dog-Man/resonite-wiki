@@ -44,7 +44,7 @@ ENV APP_ENABLE_CANCELLABLE_PROMISES=1
 
 WORKDIR /opt/proton
 
-RUN git clone https://github.com/wikimedia/mediawiki-services-chromium-render.git /opt/proton \
+RUN git clone https://github.com/Yellow-Dog-Man/mediawiki-services-chromium-render.git /opt/proton \
     && cd /opt/proton \
     && npm install
 
