@@ -77,6 +77,9 @@ $wgCirrusSearchNamespaceWeights = [
     NS_MOD => 0.9
 ];
 
+// DO NOT redirect search to exact matches by default
+$wgDefaultUserOptions['search-match-redirect'] = false;
+
 # TMP
 #$wgDisableSearchUpdate = true;
 ?>
