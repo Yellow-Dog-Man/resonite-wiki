@@ -162,7 +162,9 @@ Search via Cirrus, supports ElasticSearch and OpenSearch, we have chosen [OpenSe
 
 ### Config
 
-Bare bones, we have no idea what we're doing. PR's welcome.
+See `config/wiki/extensions/Search.php` for our tweaks to the search configuration. Comments include why the changes have been made etc.
+
+Changes are based on [documentation found online](https://gerrit.wikimedia.org/g/mediawiki/extensions/CirrusSearch/%2B/HEAD/docs/settings.txt).
 
 ### Init
 
