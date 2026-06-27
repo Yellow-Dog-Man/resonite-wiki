@@ -67,6 +67,16 @@ $wgCirrusSearchSuggesterNamespaces = [ NS_MAIN, NS_MOD, NS_TUTORIAL, NS_MOD, NS_
 // We do need both, i dunno i was tired - prime
 $wgCirrusSearchSuggesterUseNamespaceMappings = true;
 
+// weights for various namespaces
+$wgCirrusSearchNamespaceWeights = [
+    NS_TUTORIAL => 1.1, // Slightly bump tutorial, if they are searching they may be looking for help
+    NS_MAIN => 1.0,
+    NS_COMPONENT => 1.0,
+    NS_PROTOFLUX => 1.0,
+    NS_TYPE => 0.9, // These two are more advanced, so slightly nerf their weight
+    NS_MOD => 0.9
+];
+
 # TMP
 #$wgDisableSearchUpdate = true;
 ?>
