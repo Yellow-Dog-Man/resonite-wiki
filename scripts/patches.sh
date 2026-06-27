@@ -26,6 +26,9 @@ sed -i '/"johnkary\/phpunit-speedtrap":/d' composer.json
 # https://symfony.com/blog/symfony-6-4-40-released
 sed -i 's/"symfony\/yaml": "6\.4\.25"/"symfony\/yaml": "^6.4.40"/' composer.json
 
+# Guzzle 7.10 is bad, 7.12.1 is good
+sed -i 's/"guzzlehttp\/guzzle": "7\.10\.0"/"guzzlehttp\/guzzle": "^7.12.1"/' composer.json
+
 # Any other manual commands to patch stuff here.
 
 # Mark that patches have been applied
