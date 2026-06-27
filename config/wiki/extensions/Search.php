@@ -64,6 +64,8 @@ $wgCirrusSearchFullTextQueryBuilderProfile = 'perfield_builder';
 // This config property was made with: https://github.com/Yellow-Dog-Man/mediawiki-extensions-CirrusSearch/pull/1
 // See Namespaces.php for more!
 $wgCirrusSearchSuggesterNamespaces = [ NS_MAIN, NS_MOD, NS_TUTORIAL, NS_MOD, NS_TYPE, NS_PROTOFLUX, NS_COMPONENT];
+// We do need both, i dunno i was tired - prime
+$wgCirrusSearchSuggesterUseNamespaceMappings = true;
 
 # TMP
 #$wgDisableSearchUpdate = true;
