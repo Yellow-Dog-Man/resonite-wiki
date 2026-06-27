@@ -155,6 +155,7 @@ Search requires 3 Extensions:
    - Gives the power users the ability to search really well, UI stuff
 - [Cirrus Search](https://www.mediawiki.org/wiki/Extension:CirrusSearch)
    - Search infrastructure and search index management
+   - We maintain our own fork, with a few changes to support multiple namespaces, find our changes at: https://github.com/Yellow-Dog-Man/mediawiki-extensions-CirrusSearch/commits/REL1_45/
 - [Elastica](https://www.mediawiki.org/wiki/Extension:Elastica)
    - Basically an SDK for Elasticsearch
 
@@ -185,6 +186,10 @@ php maintenance/run.php CirrusSearch:UpdateSuggesterIndex
 ### Debugging
 
 Run this: `curl resonite-wiki-opensearch:9200/_cat/indices?v`, to check for connectivity and indexes.
+
+### Maintenance
+
+- `php maintenance/run.php CirrusSearch:UpdateSuggesterIndex` , to update the suggester index
 
 ## PDF Export
 
