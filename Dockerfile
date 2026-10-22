@@ -1,4 +1,10 @@
-FROM mediawiki:1.45.1
+# Base image is built from Dockerfile.mediawiki (vendored copy of the official mediawiki image)
+# and published by CI as ghcr.io/yellow-dog-man/resonite-wiki-mediawiki.
+# For local builds, build the base first and override this, e.g.:
+#   docker build -f Dockerfile.mediawiki -t resonite-wiki-mediawiki:local .
+#   docker build --build-arg MEDIAWIKI_BASE_IMAGE=resonite-wiki-mediawiki:local .
+ARG MEDIAWIKI_BASE_IMAGE=ghcr.io/yellow-dog-man/resonite-wiki-mediawiki:main
+FROM ${MEDIAWIKI_BASE_IMAGE}
 
 # Copy extensions into the image
 COPY extensions/ /var/www/html/extensions/

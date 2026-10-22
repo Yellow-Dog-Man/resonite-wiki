@@ -14,7 +14,24 @@ permissions:
   contents: read
 
 jobs:
+  # Base MediaWiki image, vendored from the official mediawiki docker image (see Dockerfile.mediawiki).
+  # Must be published before the Wiki image, which builds FROM it.
+  mediawiki-base:
+    runs-on: ubuntu-latest
+    name: 'Build & Publish MediaWiki Base'
+    steps:
+      - name: 'Checkout current repository'
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: 'Build Docker image'
+        uses: Yellow-Dog-Man/composite-actions-templates/.github/actions/docker-build-push@b4f799dd8ed863b11a1df3e27d1a243e89509dbe
+        with:
+          docker-image-name: '${{ github.repository_owner }}/resonite-wiki-mediawiki'
+          docker-token: '${{ github.token }}'
+          dockerfile-path: 'Dockerfile.mediawiki'
+
   docker-build:
+    needs: mediawiki-base
     runs-on: ubuntu-latest
     name: 'Build & Publish ${{ matrix.image-name }}'
     strategy:

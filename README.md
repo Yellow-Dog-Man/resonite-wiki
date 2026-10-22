@@ -35,6 +35,10 @@ Where we lamented about this issue before building this repo to fix it.
 - Dockerfile
    - Contains our custom dockerfile for the mediawiki installation.
    - This can bake Extensions and skins into the docker container, avoiding the overhead and creating a stable image
+   - Builds `FROM` the base image produced by `Dockerfile.mediawiki` (`ghcr.io/yellow-dog-man/resonite-wiki-mediawiki:main`)
+- Dockerfile.mediawiki
+   - Temporarily vendored copy of the [official MediaWiki Dockerfile](https://github.com/wikimedia/mediawiki-docker/blob/main/1.45/apache/Dockerfile), bumped to a patched PHP version
+   - Built and published by CI before the main Wiki image
 - config
    - A collection of configuration files for multiple services. 
    - wiki
