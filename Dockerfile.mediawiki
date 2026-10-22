@@ -2,9 +2,10 @@
 # to handle PHP vulnerabilities: https://www.php.net/archive/2026.php#2026-10-21-5
 # I hope this is as temporary as it possibly can be - Prime
 
-# Updated to: https://hub-stage.docker.com/layers/library/php/8.5.12-apache/images/sha256-28f081a6b4df32f0b6d99d94ba3fc3c26e965d6233c0bc92d84e97c10d9913df
-
-FROM php:8.5.12-apache
+# Pinned to the patched PHP 8.3 release (upstream uses php:8.3-apache).
+# Do NOT jump to 8.5: OPcache is built into PHP 8.5 and can't be installed via docker-php-ext-install,
+# and upstream MediaWiki 1.45 images are built/tested against 8.3.
+FROM php:8.3.36-apache
 
 # System dependencies
 RUN set -eux; \
