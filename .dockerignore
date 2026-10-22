@@ -7,6 +7,9 @@
 
 # Docker files
 Dockerfile
+Dockerfile.mediawiki
+Dockerfile.proton
+Dockerfile.utilities
 docker-compose.yaml
 .dockerignore
 
